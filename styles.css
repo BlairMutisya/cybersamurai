@@ -667,7 +667,7 @@ nav {
 }
 
 .blog__container .section__header::before {
-  content: "Blog";
+  content: "Projects";
 }
 
 .blog__grid {
