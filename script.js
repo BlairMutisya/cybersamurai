@@ -23,7 +23,7 @@
 // });
 
 const typed = new Typed(".header__container h1", {
-  strings: ["Full-Stack Developer", "Telecommunication Engineer"],
+  strings: ["Full-Stack Developer", "Telecommunications Engineer"],
   typeSpeed: 100,
   backSpeed: 60,
   loop: true,

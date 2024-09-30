@@ -283,7 +283,7 @@ nav {
 }
 
 .nav__logo a span {
-  color: var(--secondary-color);
+  color: #090f1b;
 }
 
 .nav__menu__btn {
@@ -303,7 +303,7 @@ nav {
   justify-content: center;
   flex-direction: column;
   gap: 2rem;
-  background-color: var(--secondary-color);
+  background-color: #090f1b;
   transition: 0.5s;
   z-index: -1;
   transform: translateY(-100%);
