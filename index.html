@@ -1,423 +1,712 @@
 <!DOCTYPE html>
-<body lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
-    />
-    <link rel="stylesheet" href="styles.css" />
-    <title>Blair Mutisya | portfolio</title>
-  </head>
-    <nav>
-      <div class="nav__header">
-        <div class="nav__logo">
-          <a href="#">Blair<span>.</span></a>
-        </div>
-        <div class="nav__menu__btn" id="menu-btn">
-          <i class="ri-menu-line"></i>
-        </div>
-      </div>
-      <ul class="nav__links" id="nav-links">
-        <li class="link"><a href="#home">Home</a></li>
-        <li class="link"><a href="#about">About</a></li>
-        <li class="link"><a href="#resume">Resume</a></li>
-        <li class="link"><a href="#projects">Projects</a></li>
-        <li class="link"><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-    <header class="header" id="home">
-      <div class="section__container header__container">
-        <h4>Hello, I'm Blair a</h4>
-        <h1></h1>
-        <p class="section__description">
-          In the realm of technology, I blend telecommunications engineering
-          with software development finesse. As a Telecommunications Engineer
-          and Software Developer, my portfolio is a digital journey where
-          hardware meets code. Explore a space where innovation shapes user
-          experiences and technology drives positive change. Welcome to my
-          world, where every line of code tells a story and each project is a
-          testament to my passion for technology and problem-solving.
-        </p>
-        <div class="header__btns">
-          <button class="btn btn__primary" id="download-cv">Download CV</button>
-          <button class="btn btn__secondary">Read More</button>
-        </div>
-      </div>
-    </header>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blair Vullu | Backend Engineer</title>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:#050A0E; --bg2:#080F14; --surface:#0D1A24; --surface2:#112030;
+      --accent:#00D4FF; --accent2:#00FF88; --accent3:#FF6B35;
+      --text:#E8F4F8; --text-dim:#6B8FA3; --text-muted:#3A5A6E;
+      --border:rgba(0,212,255,0.12); --border2:rgba(0,212,255,0.25);
+      --mono:'JetBrains Mono',monospace; --sans:'Space Grotesk',sans-serif;
+      --glow:0 0 40px rgba(0,212,255,0.15); --nav-bg:rgba(5,10,14,0.88);
+      --tt:background 0.4s,color 0.4s,border-color 0.4s,box-shadow 0.4s;
+    }
+    [data-theme="light"] {
+      --bg:#F0F7FF; --bg2:#E4EFF9; --surface:#FFFFFF; --surface2:#D8EBF8;
+      --accent:#0084B4; --accent2:#008A50; --accent3:#D44F1E;
+      --text:#0A1929; --text-dim:#3A5A72; --text-muted:#6B8FA3;
+      --border:rgba(0,132,180,0.18); --border2:rgba(0,132,180,0.35);
+      --nav-bg:rgba(240,247,255,0.92); --glow:0 0 30px rgba(0,132,180,0.12);
+    }
+    *{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{background:var(--bg);color:var(--text);font-family:var(--sans);overflow-x:hidden;transition:var(--tt);cursor:none}
+    @media(hover:none){body{cursor:auto}}
+    body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:998;opacity:0.4}
+    ::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--accent);border-radius:2px}
 
-    <section class="section__container about__container" id="about">
-      <div class="about__image">
-        <img src="./Assets/Photo.jpg" alt="about" />
-      </div>
-      <div class="about__content">
-        <h4>Let's Introduce About Myself</h4>
-        <p class="section__description">
-          Hello, I'm Blair Vullu, a dedicated Telecommunications Engineer and
-          Software Developer driven by a quest for technological innovation.
-          With a knack for problem-solving and a passion for continuous
-          learning,
-          <span
-            >I bridge the gap between telecommunications and software
-            realms.</span
-          >
-          My projects embody a harmonious blend of frontend finesse and backend
-          robustness, crafting seamless digital solutions that make a tangible
-          impact.
-        </p>
-        <p class="section__description">
-          Welcome to my portfolio, where
-          <span>every line of code is crafted with precision</span> and each
-          project is a testament to my commitment to excellence in technology.
-        </p>
+    /* CURSOR */
+    #cur-dot{position:fixed;width:8px;height:8px;background:var(--accent);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .2s,height .2s,background .2s;box-shadow:0 0 10px var(--accent),0 0 20px rgba(0,212,255,0.4)}
+    #cur-ring{position:fixed;width:36px;height:36px;border:1.5px solid var(--accent);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);opacity:.7;transition:width .25s,height .25s,border-color .25s}
+    #cur-trail{position:fixed;width:60px;height:60px;border:1px solid rgba(0,212,255,0.2);border-radius:50%;pointer-events:none;z-index:9997;transform:translate(-50%,-50%);opacity:.3}
+    @media(hover:none){#cur-dot,#cur-ring,#cur-trail{display:none}}
 
-        <div class="techstacks">
-          <h4>Tech Stacks I Use</h4>
-          <div class="tech__icons">
-            <i class="ri-react-line"></i>
-            <i class="ri-node-js-line"></i>
-            <i class="ri-mongodb-line"></i>
-            <i class="ri-html5-line"></i>
-            <i class="ri-css3-line"></i>
-            <i class="ri-js-line"></i>
-            <i class="ri-vuejs-line"></i>
-            <i class="ri-python-line"></i>
-          </div>
+    /* SCROLL CHARACTER */
+    #scroll-ground{position:fixed;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--accent),transparent);pointer-events:none;z-index:899;opacity:.3}
+    #scroll-progress{position:fixed;bottom:58px;left:0;height:2px;background:var(--accent);z-index:901;pointer-events:none;box-shadow:0 0 8px var(--accent)}
+    #scroll-char-wrap{position:fixed;bottom:0;left:0;right:0;height:64px;pointer-events:none;z-index:900;overflow:hidden}
+    #scroll-char{position:absolute;bottom:4px;left:0;width:40px;height:56px;will-change:transform;transform-origin:center bottom}
+    #scroll-char svg{width:40px;height:56px;image-rendering:pixelated;filter:drop-shadow(0 0 6px var(--accent))}
+    @keyframes wL{0%{transform:rotate(0)}25%{transform:rotate(20deg)}75%{transform:rotate(-20deg)}100%{transform:rotate(0)}}
+    @keyframes wR{0%{transform:rotate(0)}25%{transform:rotate(-20deg)}75%{transform:rotate(20deg)}100%{transform:rotate(0)}}
+    @keyframes wB{0%,100%{transform:translateY(0)}50%{transform:translateY(-2px)}}
+    .cB{animation:wB .4s ease infinite}.cLL{transform-origin:50% 0%;animation:wL .4s ease infinite}.cRL{transform-origin:50% 0%;animation:wR .4s ease infinite}.cLA{transform-origin:50% 0%;animation:wR .4s ease infinite}.cRA{transform-origin:50% 0%;animation:wL .4s ease infinite}
+    .stopped .cB,.stopped .cLL,.stopped .cRL,.stopped .cLA,.stopped .cRA{animation-play-state:paused}
+    @media(max-width:900px){#scroll-char-wrap,#scroll-ground,#scroll-progress{display:none}}
 
-        </div>
+    /* THEME TOGGLE */
+    #theme-toggle{display:flex;align-items:center;gap:.5rem;background:var(--surface);border:1px solid var(--border2);border-radius:100px;padding:.3rem .75rem;cursor:pointer;transition:all .3s;font-family:var(--mono);font-size:.7rem;color:var(--text-dim)}
+    #theme-toggle:hover{border-color:var(--accent);color:var(--accent)}
+    .t-track{width:32px;height:18px;background:var(--surface2);border-radius:100px;border:1px solid var(--border2);position:relative;transition:background .3s}
+    [data-theme="light"] .t-track{background:var(--accent)}
+    .t-knob{position:absolute;width:12px;height:12px;background:var(--text-dim);border-radius:50%;top:50%;left:2px;transform:translateY(-50%);transition:left .3s,background .3s}
+    [data-theme="light"] .t-knob{left:16px;background:#fff}
 
-        <div class="about__progress">
-          <h5>Telecommunications Engineering</h5>
-          <div class="about__progressbar" data-progress="90"><span></span></div>
-          <h5>Full-Stack Development</h5>
-          <div class="about__progressbar" data-progress="85"><span></span></div>
-          <h5>Backend Development</h5>
-          <div class="about__progressbar" data-progress="85"><span></span></div>
-          <h5>Frontend Development </h5>
-          <div class="about__progressbar" data-progress="85"><span></span></div>
-          <h5>Database Management</h5>
-          <div class="about__progressbar" data-progress="80"><span></span></div>
-          <h5>API Development</h5>
-          <div class="about__progressbar" data-progress="75"><span></span></div>
-          <h5>Software Architecture</h5>
-          <div class="about__progressbar" data-progress="80"><span></span></div>
+    /* NAV */
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1rem 3rem;background:var(--nav-bg);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);gap:1rem;transition:var(--tt)}
+    .nav-logo{font-family:var(--mono);font-size:1.1rem;font-weight:700;color:var(--accent);flex-shrink:0}
+    .nav-logo span{color:var(--text-dim)}
+    .nav-links{display:flex;gap:2rem;list-style:none}
+    .nav-links a{font-family:var(--mono);font-size:.72rem;color:var(--text-dim);text-decoration:none;letter-spacing:.08em;transition:color .2s;text-transform:uppercase;white-space:nowrap}
+    .nav-links a:hover{color:var(--accent)}
+    .nav-right{display:flex;align-items:center;gap:.75rem;flex-shrink:0}
+    .nav-cta{font-family:var(--mono);font-size:.75rem;padding:.45rem 1rem;background:transparent;border:1px solid var(--accent);color:var(--accent);border-radius:3px;cursor:pointer;transition:all .2s;text-decoration:none;white-space:nowrap}
+    .nav-cta:hover{background:var(--accent);color:var(--bg)}
+    .nav-hbg{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+    .nav-hbg span{display:block;width:22px;height:2px;background:var(--accent);border-radius:2px;transition:.3s}
+
+    /* HERO */
+    #home{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;padding:8rem 4rem 8rem}
+    .hero-grid-bg{position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black,transparent);transition:var(--tt)}
+    .hero-orb{position:absolute;border-radius:50%;filter:blur(120px);pointer-events:none}
+    .hero-orb-1{width:600px;height:600px;background:radial-gradient(circle,rgba(0,212,255,.12),transparent 70%);top:-100px;right:-100px}
+    .hero-orb-2{width:400px;height:400px;background:radial-gradient(circle,rgba(0,255,136,.08),transparent 70%);bottom:0;left:200px}
+    [data-theme="light"] .hero-orb-1{background:radial-gradient(circle,rgba(0,132,180,.08),transparent 70%)}
+    [data-theme="light"] .hero-orb-2{background:radial-gradient(circle,rgba(0,138,80,.06),transparent 70%)}
+    .hero-content{position:relative;max-width:900px}
+    .hero-badge{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--mono);font-size:.75rem;color:var(--accent2);border:1px solid rgba(0,255,136,.3);padding:.35rem .85rem;border-radius:100px;margin-bottom:2rem;letter-spacing:.05em}
+    [data-theme="light"] .hero-badge{border-color:rgba(0,138,80,.4)}
+    .hero-badge::before{content:'';display:block;width:7px;height:7px;border-radius:50%;background:var(--accent2);animation:pulse 2s ease infinite}
+    @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.8)}}
+    .hero-name{font-size:clamp(3rem,7vw,6rem);font-weight:700;line-height:1;letter-spacing:-.03em;margin-bottom:.5rem}
+    .hero-title{font-family:var(--mono);font-size:clamp(1rem,2.5vw,1.4rem);color:var(--accent);margin-bottom:1.5rem}
+    .hero-title .cur{display:inline-block;width:2px;height:1.2em;background:var(--accent);margin-left:3px;vertical-align:middle;animation:blink 1s step-end infinite}
+    @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+    .hero-desc{font-size:1.05rem;color:var(--text-dim);line-height:1.7;max-width:600px;margin-bottom:2.5rem}
+    .hero-actions{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:3rem}
+    .btn-p{display:inline-flex;align-items:center;gap:.5rem;padding:.85rem 2rem;background:var(--accent);color:var(--bg);font-family:var(--mono);font-size:.85rem;font-weight:700;border:none;border-radius:4px;cursor:pointer;text-decoration:none;transition:all .2s;letter-spacing:.04em}
+    .btn-p:hover{filter:brightness(1.15);box-shadow:0 0 30px rgba(0,212,255,.4);transform:translateY(-1px)}
+    .btn-g{display:inline-flex;align-items:center;gap:.5rem;padding:.85rem 2rem;background:transparent;color:var(--text);font-family:var(--mono);font-size:.85rem;border:1px solid var(--border2);border-radius:4px;cursor:pointer;text-decoration:none;transition:all .2s;letter-spacing:.04em}
+    .btn-g:hover{border-color:var(--accent);color:var(--accent)}
+    .hero-stats{display:flex;gap:3rem;flex-wrap:wrap}
+    .stat{border-left:2px solid var(--accent);padding-left:1rem}
+    .stat-num{font-size:2rem;font-weight:700;color:var(--accent);font-family:var(--mono);line-height:1}
+    .stat-label{font-size:.75rem;color:var(--text-dim);font-family:var(--mono);text-transform:uppercase;letter-spacing:.08em;margin-top:.25rem}
+
+    /* TERMINAL */
+    .hero-terminal{position:absolute;right:4rem;top:50%;transform:translateY(-50%);width:420px;background:var(--surface);border:1px solid var(--border);border-radius:10px;overflow:hidden;box-shadow:var(--glow),0 40px 80px rgba(0,0,0,.5);display:none;transition:var(--tt)}
+    .t-hdr{display:flex;align-items:center;gap:.5rem;padding:.75rem 1rem;background:rgba(0,0,0,.3);border-bottom:1px solid var(--border)}
+    [data-theme="light"] .t-hdr{background:rgba(0,0,0,.05)}
+    .t-dot{width:12px;height:12px;border-radius:50%}.td-r{background:#FF5F57}.td-y{background:#FFBD2E}.td-g{background:#28C940}
+    .t-ttl{font-family:var(--mono);font-size:.7rem;color:var(--text-dim);margin-inline:auto}
+    .t-body{padding:1.5rem;font-family:var(--mono);font-size:.8rem;line-height:2}
+    .t-ln{display:flex;gap:.5rem}.t-pr{color:var(--accent2)}.t-k{color:var(--accent)}.t-v{color:var(--accent2)}.t-c{color:var(--text-muted)}
+
+    /* SECTIONS */
+    section{padding:6rem 4rem;transition:var(--tt)}
+    .sec-lbl{font-family:var(--mono);font-size:.72rem;color:var(--accent);letter-spacing:.15em;text-transform:uppercase;margin-bottom:.75rem}
+    .sec-ttl{font-size:clamp(2rem,4vw,3rem);font-weight:700;letter-spacing:-.02em;margin-bottom:1rem;line-height:1.1}
+    .sec-sub{color:var(--text-dim);font-size:1rem;line-height:1.7;max-width:560px}
+    .sec-hdr{margin-bottom:4rem}
+
+    /* ABOUT */
+    #about{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+    .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;max-width:1200px;margin:0 auto}
+    .about-text p{color:var(--text-dim);line-height:1.8;margin-bottom:1.25rem;font-size:.97rem}
+    .about-text span{color:var(--accent)}
+    .stk-grid{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:.75rem}
+    .stk-tag{font-family:var(--mono);font-size:.72rem;padding:.3rem .75rem;background:rgba(0,212,255,.08);border:1px solid rgba(0,212,255,.2);color:var(--accent);border-radius:3px;letter-spacing:.04em;transition:var(--tt)}
+    [data-theme="light"] .stk-tag{background:rgba(0,132,180,.08);border-color:rgba(0,132,180,.2)}
+    .sk-list{display:flex;flex-direction:column;gap:1.2rem}
+    .sk-meta{display:flex;justify-content:space-between;margin-bottom:.4rem}
+    .sk-name{font-family:var(--mono);font-size:.8rem;color:var(--text)}
+    .sk-pct{font-family:var(--mono);font-size:.75rem;color:var(--accent)}
+    .sk-bar{height:3px;background:rgba(255,255,255,.06);border-radius:2px;overflow:hidden}
+    [data-theme="light"] .sk-bar{background:rgba(0,0,0,.08)}
+    .sk-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:2px;transform-origin:left;animation:fillBar 1.5s ease forwards}
+    @keyframes fillBar{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+
+    /* EXPERIENCE */
+    #experience{max-width:1200px;margin:0 auto;padding:6rem 4rem}
+    .tl{position:relative}
+    .tl::before{content:'';position:absolute;left:160px;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,transparent,var(--accent),transparent)}
+    .tl-item{display:grid;grid-template-columns:160px 1fr;gap:3rem;margin-bottom:3.5rem;position:relative}
+    .tl-item::before{content:'';position:absolute;left:154px;top:6px;width:13px;height:13px;border-radius:50%;background:var(--accent);box-shadow:0 0 20px rgba(0,212,255,.6);border:2px solid var(--bg)}
+    .tl-date{font-family:var(--mono);font-size:.72rem;color:var(--text-muted);text-align:right;padding-top:4px}
+    .tl-role{font-size:1.1rem;font-weight:600;color:var(--text);margin-bottom:.2rem}
+    .tl-co{font-family:var(--mono);font-size:.8rem;color:var(--accent);margin-bottom:.15rem}
+    .tl-loc{font-family:var(--mono);font-size:.72rem;color:var(--text-muted);margin-bottom:1rem}
+    .tl-badge{display:inline-block;font-family:var(--mono);font-size:.65rem;padding:.2rem .6rem;background:rgba(0,255,136,.1);border:1px solid rgba(0,255,136,.3);color:var(--accent2);border-radius:2px;margin-bottom:1rem;letter-spacing:.06em;text-transform:uppercase}
+    .tl-list{list-style:none;display:flex;flex-direction:column;gap:.5rem}
+    .tl-list li{font-size:.9rem;color:var(--text-dim);padding-left:1.25rem;position:relative;line-height:1.6}
+    .tl-list li::before{content:'→';position:absolute;left:0;color:var(--accent);font-family:var(--mono)}
+
+    /* PROJECTS */
+    #projects{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+    .proj-wrap{max-width:1200px;margin:0 auto}
+    .proj-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:1.5rem}
+    .proj-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:2rem;position:relative;overflow:hidden;transition:border-color .3s,transform .3s,box-shadow .3s,background .4s}
+    .proj-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,212,255,.05),transparent 60%);opacity:0;transition:opacity .3s}
+    .proj-card:hover::before{opacity:1}
+    .proj-card:hover{border-color:var(--border2);transform:translateY(-4px);box-shadow:var(--glow),0 20px 60px rgba(0,0,0,.3)}
+    .proj-card.feat{border-color:rgba(0,212,255,.3)}
+    .proj-card.indev{border-color:rgba(255,107,53,.2)}
+    .proj-status{display:inline-block;font-family:var(--mono);font-size:.65rem;padding:.2rem .6rem;border-radius:2px;margin-bottom:1.25rem;letter-spacing:.06em;text-transform:uppercase}
+    .s-prod{background:rgba(0,255,136,.1);border:1px solid rgba(0,255,136,.3);color:var(--accent2)}
+    .s-dev{background:rgba(255,107,53,.1);border:1px solid rgba(255,107,53,.3);color:var(--accent3)}
+    .s-done{background:rgba(0,212,255,.08);border:1px solid rgba(0,212,255,.2);color:var(--accent)}
+    .proj-ttl{font-size:1.1rem;font-weight:600;margin-bottom:.75rem;color:var(--text)}
+    .proj-desc{font-size:.88rem;color:var(--text-dim);line-height:1.65;margin-bottom:1.5rem}
+    .proj-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1.5rem}
+    .proj-tag{font-family:var(--mono);font-size:.68rem;padding:.2rem .55rem;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);color:var(--text-dim);border-radius:3px}
+    [data-theme="light"] .proj-tag{background:rgba(0,0,0,.04);border-color:rgba(0,0,0,.1)}
+    .proj-links{display:flex;gap:1rem;flex-wrap:wrap}
+    .proj-lnk{font-family:var(--mono);font-size:.75rem;color:var(--text-dim);text-decoration:none;display:flex;align-items:center;gap:.35rem;transition:color .2s}
+    .proj-lnk:hover{color:var(--accent)}
+
+    /* SKILLS */
+    #skills{max-width:1200px;margin:0 auto;padding:6rem 4rem}
+    .sk-cats{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.5rem}
+    .sk-cat{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.75rem;transition:border-color .3s,background .4s}
+    .sk-cat:hover{border-color:var(--border2)}
+    .sk-cat-ico{font-size:1.5rem;margin-bottom:.75rem}
+    .sk-cat-ttl{font-family:var(--mono);font-size:.72rem;color:var(--accent);text-transform:uppercase;letter-spacing:.1em;margin-bottom:1rem}
+    .sk-cat-items{display:flex;flex-direction:column;gap:.5rem}
+    .sk-cat-item{display:flex;align-items:center;justify-content:space-between;font-size:.88rem;color:var(--text-dim)}
+    .dot-row{display:flex;gap:3px}
+    .dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.1)}
+    [data-theme="light"] .dot{background:rgba(0,0,0,.1)}
+    .dot.f{background:var(--accent)}
+
+    /* CONTACT */
+    #contact{background:var(--bg2);border-top:1px solid var(--border)}
+    .c-inner{max-width:800px;margin:0 auto;text-align:center}
+    .c-grid{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;margin-bottom:3rem}
+    .c-card{display:flex;align-items:center;gap:.75rem;padding:1rem 1.75rem;background:var(--surface);border:1px solid var(--border);border-radius:6px;text-decoration:none;transition:all .2s}
+    .c-card:hover{border-color:var(--accent);box-shadow:var(--glow);transform:translateY(-2px)}
+    .c-ico{font-size:1.2rem}
+    .c-lbl{font-family:var(--mono);font-size:.65rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:.08em}
+    .c-val{font-size:.88rem;color:var(--text)}
+    .c-form{display:grid;gap:1rem;text-align:left}
+    .f-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+    .f-grp{display:flex;flex-direction:column;gap:.4rem}
+    .f-grp label{font-family:var(--mono);font-size:.72rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:.08em}
+    .f-grp input,.f-grp textarea{background:var(--surface);border:1px solid var(--border);border-radius:4px;padding:.85rem 1rem;color:var(--text);font-family:var(--sans);font-size:.9rem;outline:none;transition:border-color .2s,background .4s,color .4s}
+    .f-grp input:focus,.f-grp textarea:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(0,212,255,.1)}
+    .f-grp textarea{resize:vertical;min-height:120px}
+
+    /* FOOTER */
+    footer{padding:2rem 4rem;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;transition:var(--tt)}
+    .f-logo{font-family:var(--mono);font-size:1rem;color:var(--accent)}
+    .f-copy{font-family:var(--mono);font-size:.72rem;color:var(--text-muted)}
+    .f-links{display:flex;gap:1.5rem}
+    .f-links a{font-family:var(--mono);font-size:.72rem;color:var(--text-dim);text-decoration:none;transition:color .2s;text-transform:uppercase;letter-spacing:.06em}
+    .f-links a:hover{color:var(--accent)}
+
+    /* MISC */
+    .fade-in{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+    .fade-in.visible{opacity:1;transform:none}
+    .learn-item:hover{border-color:var(--border2) !important}
+
+    /* MOBILE */
+    @media(max-width:900px){
+      nav{padding:.85rem 1.25rem}
+      .nav-links{display:none}.nav-cta{display:none}.nav-hbg{display:flex}
+      #theme-toggle .t-lbl{display:none}
+      .nav-links.open{display:flex;flex-direction:column;position:fixed;top:56px;left:0;right:0;background:var(--nav-bg);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:1.5rem 2rem;gap:1.25rem;align-items:center;z-index:99}
+      #home{padding:6rem 1.25rem 8rem}
+      section{padding:4rem 1.25rem}
+      #experience,#skills{padding:4rem 1.25rem}
+      .proj-wrap{padding:0}
+      .hero-terminal{display:none!important}
+      .hero-name{font-size:2.6rem}
+      .hero-desc{font-size:.95rem}
+      .about-grid{grid-template-columns:1fr;gap:2.5rem}
+      .tl::before{left:0}
+      .tl-item{grid-template-columns:1fr;gap:.5rem}
+      .tl-item::before{left:-6px;top:4px}
+      .tl-date{text-align:left}
+      .f-row{grid-template-columns:1fr}
+      footer{flex-direction:column;text-align:center}
+      .hero-stats{gap:1.5rem}
+      .hero-actions{gap:.75rem}
+      .btn-p,.btn-g{padding:.75rem 1.25rem;font-size:.8rem}
+      .proj-grid{grid-template-columns:1fr}
+      .sk-cats{grid-template-columns:1fr}
+    }
+    @media(min-width:1200px){.hero-terminal{display:block}.hero-content{max-width:600px}}
+    @media(min-width:901px) and (max-width:1199px){nav{padding:1rem 2rem}.nav-links{gap:1.5rem}.nav-links a{font-size:.68rem}}
+  </style>
+</head>
+<body>
+
+<!-- CURSORS -->
+<div id="cur-dot"></div>
+<div id="cur-ring"></div>
+<div id="cur-trail"></div>
+
+<!-- SCROLL UI -->
+<div id="scroll-progress"></div>
+<div id="scroll-ground"></div>
+<div id="scroll-char-wrap">
+  <div id="scroll-char" class="stopped">
+    <svg viewBox="0 0 20 28" xmlns="http://www.w3.org/2000/svg">
+      <!-- Head -->
+      <rect class="cB" x="6" y="0" width="8" height="7" rx="1" fill="var(--accent)" opacity=".9"/>
+      <!-- Eyes -->
+      <rect x="8" y="1.5" width="1.5" height="1.5" fill="var(--bg)"/>
+      <rect x="10.5" y="1.5" width="1.5" height="1.5" fill="var(--bg)"/>
+      <!-- Smile -->
+      <rect x="8.5" y="4.5" width="3" height=".8" fill="var(--bg)" opacity=".6"/>
+      <!-- Body -->
+      <rect class="cB" x="5" y="8" width="10" height="7" rx="1" fill="var(--accent2)" opacity=".85"/>
+      <!-- Code chevrons -->
+      <rect x="7" y="10" width="1.5" height=".8" fill="var(--bg)" opacity=".5"/>
+      <rect x="11.5" y="10" width="1.5" height=".8" fill="var(--bg)" opacity=".5"/>
+      <rect x="9" y="11.5" width="2" height=".8" fill="var(--bg)" opacity=".5"/>
+      <!-- Left arm -->
+      <rect class="cLA" x="1" y="8" width="3.5" height="5.5" rx="1" fill="var(--accent)" opacity=".75"/>
+      <!-- Right arm -->
+      <rect class="cRA" x="15.5" y="8" width="3.5" height="5.5" rx="1" fill="var(--accent)" opacity=".75"/>
+      <!-- Left leg -->
+      <g class="cLL"><rect x="5" y="16" width="4" height="8" rx="1" fill="var(--accent3)" opacity=".85"/><rect x="4" y="23" width="5" height="2" rx="1" fill="var(--text-muted)"/></g>
+      <!-- Right leg -->
+      <g class="cRL"><rect x="11" y="16" width="4" height="8" rx="1" fill="var(--accent3)" opacity=".85"/><rect x="11" y="23" width="5" height="2" rx="1" fill="var(--text-muted)"/></g>
+    </svg>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">blair<span>.vullu</span></div>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="#home">home</a></li>
+    <li><a href="#about">about</a></li>
+    <li><a href="#experience">experience</a></li>
+    <li><a href="#projects">projects</a></li>
+    <li><a href="#skills">skills</a></li>
+    <li><a href="#education">education</a></li>
+    <li><a href="#contact">contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <button id="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+      <span id="t-ico">☀️</span>
+      <div class="t-track"><div class="t-knob"></div></div>
+      <span class="t-lbl" style="font-size:.68rem;letter-spacing:.05em">LIGHT</span>
+    </button>
+    <a href="#contact" class="nav-cta">hire_me()</a>
+    <button class="nav-hbg" id="hbg" aria-label="menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="home">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-orb hero-orb-1"></div>
+  <div class="hero-orb hero-orb-2"></div>
+  <div class="hero-content">
+    <div class="hero-badge">Available for opportunities</div>
+    <h1 class="hero-name">Blair<br>Vullu.</h1>
+    <div class="hero-title"><span id="typed-text">Backend Software Engineer</span><span class="cur"></span></div>
+    <p class="hero-desc">Building distributed, production-grade backend systems. Specialising in Java, Spring Boot, microservices, event-driven architecture, ESB integrations, and payment systems. Passionate about scalable architecture and real-world engineering challenges.</p>
+    <div class="hero-actions">
+      <a href="#projects" class="btn-p">View Projects →</a>
+      <a href="#contact" class="btn-g">Get In Touch</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-num">1+</div><div class="stat-label">Years Experience</div></div>
+      <div class="stat"><div class="stat-num">8+</div><div class="stat-label">Projects Shipped</div></div>
+      <div class="stat"><div class="stat-num">2</div><div class="stat-label">Live Productions</div></div>
+    </div>
+  </div>
+  <div class="hero-terminal">
+    <div class="t-hdr"><div class="t-dot td-r"></div><div class="t-dot td-y"></div><div class="t-dot td-g"></div><div class="t-ttl">blair@dev ~ zsh</div></div>
+    <div class="t-body">
+      <div class="t-ln"><span class="t-pr">❯</span><span>cat engineer.json</span></div>
+      <div class="t-ln t-c"># output:</div>
+      <div style="height:.5rem"></div>
+      <div class="t-ln"><span style="color:var(--text-dim)">{</span></div>
+      <div class="t-ln" style="padding-left:1rem"><span class="t-k">"name"</span><span class="t-c">:</span> <span class="t-v">"Blair Vullu"</span><span class="t-c">,</span></div>
+      <div class="t-ln" style="padding-left:1rem"><span class="t-k">"role"</span><span class="t-c">:</span> <span class="t-v">"Backend Engineer"</span><span class="t-c">,</span></div>
+      <div class="t-ln" style="padding-left:1rem"><span class="t-k">"stack"</span><span class="t-c">:</span> <span class="t-v">["Java","Spring Boot","Kafka"]</span><span class="t-c">,</span></div>
+      <div class="t-ln" style="padding-left:1rem"><span class="t-k">"arch"</span><span class="t-c">:</span> <span class="t-v">"Microservices"</span><span class="t-c">,</span></div>
+      <div class="t-ln" style="padding-left:1rem"><span class="t-k">"location"</span><span class="t-c">:</span> <span class="t-v">"Nairobi, KE"</span><span class="t-c">,</span></div>
+      <div class="t-ln" style="padding-left:1rem"><span class="t-k">"status"</span><span class="t-c">:</span> <span class="t-v" style="color:var(--accent2)">"open_to_opportunities"</span></div>
+      <div class="t-ln"><span style="color:var(--text-dim)">}</span></div>
+      <div style="height:.5rem"></div>
+      <div class="t-ln"><span class="t-pr">❯</span><span style="display:inline-block;width:8px;height:14px;background:var(--accent);vertical-align:middle;margin-left:4px;animation:blink 1s step-end infinite"></span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid">
+    <div class="fade-in">
+      <div class="sec-lbl">01 — About</div>
+      <h2 class="sec-ttl">Bridging code<br>and infrastructure.</h2>
+      <div class="about-text" style="margin-top:1.5rem">
+        <p>I'm a backend engineer rooted in <span>Java and Spring Boot</span>, with a background in telecommunications engineering. I design systems — not just write code. From distributed microservices to event-driven pipelines, I build with scalability and resilience in mind.</p>
+        <p>I work across enterprise-grade backend systems — deepening expertise in <span>payment integrations, ESB architecture (ISO 8583, ISO 20022), financial messaging standards</span>, and real-time data streaming with Kafka. I take ownership from design through to production.</p>
+        <p>My telecommunications foundation gives me a systems-level perspective that most backend engineers lack — I think in networks, latency, and distributed state by instinct. Currently exploring <span>AI integration</span> in backend services.</p>
+      </div>
+      <div style="margin-top:2rem">
+        <div style="font-family:var(--mono);font-size:.72rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:.12em;margin-bottom:.75rem">// core technologies</div>
+        <div class="stk-grid">
+          <span class="stk-tag">Java 17+</span><span class="stk-tag">Spring Boot</span><span class="stk-tag">Spring Cloud</span>
+          <span class="stk-tag">Apache Kafka</span><span class="stk-tag">Apache Camel</span><span class="stk-tag">Spring Security</span>
+          <span class="stk-tag">JWT / RBAC</span><span class="stk-tag">MySQL</span><span class="stk-tag">PostgreSQL</span>
+          <span class="stk-tag">Redis</span><span class="stk-tag">Docker</span><span class="stk-tag">React</span>
+          <span class="stk-tag">Flask / Python</span><span class="stk-tag">REST APIs</span><span class="stk-tag">WebSockets</span>
+          <span class="stk-tag">CI/CD</span><span class="stk-tag">Flyway</span><span class="stk-tag">Eureka</span>
+          <span class="stk-tag">Thymeleaf</span><span class="stk-tag">ISO 8583</span><span class="stk-tag">ISO 20022</span>
+          <span class="stk-tag">ESB Patterns</span><span class="stk-tag">AI Integration</span>
         </div>
       </div>
-    </section>
-<section class="service" id="service">
-  <div class="section__container service__container">
-    <h2 class="section__header">What I Do</h2>
-    <p class="section__description">
-      I specialize in delivering seamless digital experiences by integrating intuitive UX/UI design with captivating visuals. From user-centric interfaces to engaging visual storytelling, I leverage a mastery of software engineering and telecommunications expertise.
-    </p>
-    <div class="service__grid">
-      <div class="service__card">
-        <span><i class="ri-wifi-line"></i></span>
-        <div>
-          <h4>Telecommunications Engineering</h4>
-          <p>
-            Design and optimize telecommunications systems to ensure robust connectivity and performance across networks.
-          </p>
+    </div>
+    <div class="fade-in" style="transition-delay:.2s">
+      <div class="sec-lbl">// proficiency</div>
+      <div class="sk-list" style="margin-top:1rem">
+        <div><div class="sk-meta"><span class="sk-name">Spring Boot & Spring Cloud</span><span class="sk-pct">92%</span></div><div class="sk-bar"><div class="sk-fill" style="width:92%"></div></div></div>
+        <div><div class="sk-meta"><span class="sk-name">Microservices Architecture</span><span class="sk-pct">88%</span></div><div class="sk-bar"><div class="sk-fill" style="width:88%"></div></div></div>
+        <div><div class="sk-meta"><span class="sk-name">Apache Kafka / Event-Driven</span><span class="sk-pct">85%</span></div><div class="sk-bar"><div class="sk-fill" style="width:85%"></div></div></div>
+        <div><div class="sk-meta"><span class="sk-name">REST API Design</span><span class="sk-pct">90%</span></div><div class="sk-bar"><div class="sk-fill" style="width:90%"></div></div></div>
+        <div><div class="sk-meta"><span class="sk-name">ESB / ISO 8583 & ISO 20022</span><span class="sk-pct">80%</span></div><div class="sk-bar"><div class="sk-fill" style="width:80%"></div></div></div>
+        <div><div class="sk-meta"><span class="sk-name">MySQL & PostgreSQL</span><span class="sk-pct">84%</span></div><div class="sk-bar"><div class="sk-fill" style="width:84%"></div></div></div>
+        <div><div class="sk-meta"><span class="sk-name">Security (JWT, RBAC, BCrypt)</span><span class="sk-pct">84%</span></div><div class="sk-bar"><div class="sk-fill" style="width:84%"></div></div></div>
+        <div><div class="sk-meta"><span class="sk-name">Payment Systems & M-Pesa</span><span class="sk-pct">82%</span></div><div class="sk-bar"><div class="sk-fill" style="width:82%"></div></div></div>
+        <div><div class="sk-meta"><span class="sk-name">React / Frontend</span><span class="sk-pct">72%</span></div><div class="sk-bar"><div class="sk-fill" style="width:72%"></div></div></div>
+        <div><div class="sk-meta"><span class="sk-name">AI / LLM Integration</span><span class="sk-pct">65%</span></div><div class="sk-bar"><div class="sk-fill" style="width:65%"></div></div></div>
+        <div><div class="sk-meta"><span class="sk-name">Telecom Engineering</span><span class="sk-pct">88%</span></div><div class="sk-bar"><div class="sk-fill" style="width:88%"></div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div style="max-width:1200px;margin:0 auto">
+    <div class="sec-hdr fade-in"><div class="sec-lbl">02 — Experience</div><h2 class="sec-ttl">Where I've<br>built things.</h2></div>
+    <div class="tl">
+      <div class="tl-item fade-in">
+        <div class="tl-date">May 2025<br>— Present</div>
+        <div><div class="tl-badge">Currently Here</div><div class="tl-role">Junior Software Developer</div><div class="tl-co">Eclectics International</div><div class="tl-loc">R&D Department · Nairobi, Kenya</div>
+          <ul class="tl-list"><li>Developing and maintaining microservices-based backend systems using Spring Boot and Java.</li><li>Building and securing REST APIs and integrating services through Spring Cloud Gateway.</li><li>Implementing event-driven communication via Apache Kafka for real-time messaging and data streaming.</li><li>Managing service discovery and registration with Eureka across distributed systems.</li><li>Designing and optimising MySQL databases, queries, and data models for high-performance applications.</li><li>Participating in Agile cycles, Git-based collaboration, and CI/CD pipelines.</li><li>Contributing to deployment and monitoring of services in containerised environments.</li></ul>
         </div>
       </div>
-      <div class="service__card">
-        <span><i class="ri-code-line"></i></span>
-        <div>
-          <h4>Full-Stack Development</h4>
-          <p>
-            Develop scalable web applications using modern technologies like ReactJS and Flask to meet diverse user and business needs.
-          </p>
+      <div class="tl-item fade-in">
+        <div class="tl-date">~Early 2025<br>May 2025</div>
+        <div><div class="tl-badge" style="background:rgba(0,212,255,.08);border-color:rgba(0,212,255,.2);color:var(--accent)">Probation Period</div><div class="tl-role">Junior Software Developer (Probation)</div><div class="tl-co">Eclectics International</div><div class="tl-loc">R&D Department · Nairobi, Kenya</div>
+          <ul class="tl-list"><li>Onboarded into a production microservices environment serving real clients.</li><li>Built foundational skills in distributed systems, API design, and service communication patterns.</li><li>Contributed to internal R&D tooling and early-stage platform modules.</li></ul>
         </div>
       </div>
-      <div class="service__card">
-        <span><i class="ri-database-line"></i></span>
-        <div>
-          <h4>Database Management</h4>
-          <p>
-            Manage and optimize databases such as PostgreSQL and SQLite for efficient data storage, retrieval, and performance.
-          </p>
+      <div class="tl-item fade-in">
+        <div class="tl-date">Sep 2021–Dec 2021<br>Aug 2022–Nov 2023</div>
+        <div><div class="tl-role">Telecommunications Engineer</div><div class="tl-co">Kenya Civil Aviation Authority (KCAA)</div><div class="tl-loc">JKIA & Eldoret International Airport · Nairobi, Kenya</div>
+          <ul class="tl-list"><li>Operated and maintained VHF/UHF radio systems for live air traffic control operations.</li><li>Integrated GPS, ILS, VOR/DME, and NDB navigation systems into aviation infrastructure.</li><li>Worked on primary and secondary radar systems, transponders, and ADS-B surveillance equipment.</li><li>Assisted in troubleshooting, repairs, and full CNS infrastructure maintenance across two major airports.</li><li>Documented telecommunications systems and ensured full regulatory compliance with ICAO standards.</li></ul>
         </div>
       </div>
-      <div class="service__card">
-        <span><i class="ri-git-merge-line"></i></span>
-        <div>
-          <h4>API Development</h4>
-          <p>
-            Design and deploy RESTful APIs to facilitate seamless communication between frontend and backend systems, ensuring efficient data exchange.
-          </p>
-        </div>
-      </div>
-      <div class="service__card">
-        <span><i class="ri-server-line"></i></span>
-        <div>
-          <h4>Software Architecture</h4>
-          <p>
-            Architect robust software solutions with scalable and reliable architectures, ensuring long-term sustainability and adaptability.
-          </p>
-        </div>
-      </div>
-      <div class="service__card">
-        <span><i class="ri-browser-line"></i></span>
-        <div>
-          <h4>Network Analysis</h4>
-          <p>
-            Perform in-depth network analysis to optimize telecommunications systems, enhancing performance, security, and user experience.
-          </p>
+      <div class="tl-item fade-in">
+        <div class="tl-date">Prior</div>
+        <div><div class="tl-role">Assistant Telecommunications Technician</div><div class="tl-co">ISP Company</div><div class="tl-loc">Nairobi, Kenya</div>
+          <ul class="tl-list"><li>Maintained and optimised network infrastructure to deliver reliable internet services.</li><li>Troubleshot, upgraded, and ensured seamless customer connectivity.</li></ul>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-    <section class="section__container resume__container" id="resume">
-      <h2 class="section__header">My Qualifications</h2>
-      <p class="section__description">
-        Combined with a passion for continuous learning, my qualifications
-        extend beyond academia, encompassing hands-on projects and a commitment
-        to staying at the forefront of design trends.
-      </p>
-      <div class="resume__tabs">
-        <div class="resume__tablist">
-          <button class="btn active" data-tab="1">Education</button>
-          <button class="btn" data-tab="2">Experience</button>
-        </div>
-        <div class="resume__tabpanel">
-          <div class="panel__grid active" data-panel="1">
-            <div class="panel__card">
-              <span><i class="ri-graduation-cap-fill"></i></span>
-              <h4>Diploma in Telecommunication Engineering</h4>
-              <p class="section__description">Managing advanced communication systems. </p>
-              <p class="section__description">
-                My expertise spans from understanding the intricacies of signal processing and network architecture to implementing advanced telecommunication technologies. 
-            </div>
-            <div class="panel__card">
-              <span><i class="ri-graduation-cap-fill"></i></span>
-              <h4>Professional certification in Software Development</h4>
-              <p class="section__description">Elevating Software Interactions</p>
-              <p class="section__description">
-            With a solid foundation in software engineering, I excel at developing user-friendly and scalable applications. I am adept at solving complex problems, optimizing performance, and delivering high-quality software solutions.
-              </p>
-            </div>
-            <div class="panel__card">
-              <span><i class="ri-graduation-cap-fill"></i></span>
-              <h4>Certification in Linux and DevOps essentials</h4>
-              <p class="section__description">
-                Streamlining IT with Linux and DevOps
-              </p>
-              <p class="section__description">
-                I possess the skills to manage and automate IT infrastructure effectively. My expertise includes system administration, continuous integration, and deployment, ensuring streamlined and efficient operations.
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="proj-wrap">
+    <div class="sec-hdr fade-in"><div class="sec-lbl">03 — Projects</div><h2 class="sec-ttl">Things I've<br>shipped.</h2><p class="sec-sub">From production insurance platforms to payment microservices — built with precision and deployed with purpose.</p></div>
+    <div class="proj-grid">
+      <div class="proj-card feat fade-in"><div class="proj-status s-prod">⬤ Production</div><div class="proj-ttl">Heritage Insurance — Quotation & Policy Platform</div><div class="proj-desc">Production-grade microservices insurance platform for quotation generation, plan comparison, and policy management across travel and marine insurance. Serves real clients in production.</div><div class="proj-tags"><span class="proj-tag">Java</span><span class="proj-tag">Spring Boot</span><span class="proj-tag">Spring Cloud</span><span class="proj-tag">JWT / RBAC</span><span class="proj-tag">Flyway</span><span class="proj-tag">Caffeine Cache</span><span class="proj-tag">Thymeleaf PDF</span><span class="proj-tag">ESB</span><span class="proj-tag">Microservices</span></div><div class="proj-links"><span class="proj-lnk" style="color:var(--accent2)">✓ Shipped to Production</span></div></div>
+      <div class="proj-card indev fade-in"><div class="proj-status s-dev">⬤ In Development</div><div class="proj-ttl">Co-Banking Microservices Platform</div><div class="proj-desc">Distributed co-banking platform supporting multi-tenant banking operations, transactional integrity (ACID), KYC workflows, and ESB integration. Built in phased architecture from infra through to integration layer.</div><div class="proj-tags"><span class="proj-tag">Java</span><span class="proj-tag">Spring Boot</span><span class="proj-tag">Apache Kafka</span><span class="proj-tag">Apache Camel</span><span class="proj-tag">Eureka</span><span class="proj-tag">API Gateway</span><span class="proj-tag">JWT</span><span class="proj-tag">Multi-Tenancy</span><span class="proj-tag">ACID</span></div><div class="proj-links"><span class="proj-lnk" style="color:var(--accent3)">⟳ Active Development</span></div></div>
+      <div class="proj-card indev fade-in"><div class="proj-status s-dev">⬤ In Development</div><div class="proj-ttl">HRSync — Human Resource Management System</div><div class="proj-desc">Full-stack, role-based HR platform designed to streamline workforce operations end-to-end. Covers employee onboarding, leave & attendance management, payroll processing, performance reviews, and department analytics. Built as a microservices backend with a React dashboard, giving HR teams and managers real-time visibility into workforce data with audit trails and compliance reporting baked in.</div><div class="proj-tags"><span class="proj-tag">Java</span><span class="proj-tag">Spring Boot</span><span class="proj-tag">Spring Security</span><span class="proj-tag">MySQL</span><span class="proj-tag">React</span><span class="proj-tag">JWT / RBAC</span><span class="proj-tag">Microservices</span><span class="proj-tag">REST API</span><span class="proj-tag">Payroll Engine</span></div><div class="proj-links"><span class="proj-lnk" style="color:var(--accent3)">⟳ Active Development</span></div></div>
+      <div class="proj-card fade-in"><div class="proj-status s-done">● Complete</div><div class="proj-ttl">Money Wallet — Payment Microservices</div><div class="proj-desc">Full microservices payment system: authentication, KYC, wallet, and transaction services. P2P transfers, deposits, withdrawals, Kafka notifications, Redis caching, and CI/CD pipelines.</div><div class="proj-tags"><span class="proj-tag">Spring Boot</span><span class="proj-tag">Kafka</span><span class="proj-tag">Redis</span><span class="proj-tag">Eureka</span><span class="proj-tag">Spring Cloud Gateway</span><span class="proj-tag">MySQL</span><span class="proj-tag">CI/CD</span></div></div>
+      <div class="proj-card fade-in"><div class="proj-status s-done">● Complete</div><div class="proj-ttl">GeoBuddy — GPS Tracker System</div><div class="proj-desc">Real-time tracking backend for pets, children, and luggage using GF21 GPS devices. JWT auth, OTP login, WebSocket live location, IMEI validation, and MySQL persistence.</div><div class="proj-tags"><span class="proj-tag">Spring Boot</span><span class="proj-tag">WebSocket</span><span class="proj-tag">JWT</span><span class="proj-tag">OTP</span><span class="proj-tag">MySQL</span><span class="proj-tag">GF21 Devices</span><span class="proj-tag">REST API</span></div></div>
+      <div class="proj-card feat fade-in"><div class="proj-status s-prod">⬤ Production</div><div class="proj-ttl">Nalazuri — Travel & Tourism Platform</div><div class="proj-desc">Live travel platform enabling users to discover curated Kenyan travel packages and generate professional PDF invoices on the fly. Integrated Twilio WhatsApp delivery for instant invoice sharing — no backend required. Built with a vivid, conversion-focused UI using React and Framer Motion.</div><div class="proj-tags"><span class="proj-tag">React</span><span class="proj-tag">Twilio</span><span class="proj-tag">WhatsApp API</span><span class="proj-tag">Framer Motion</span><span class="proj-tag">PDF Generation</span><span class="proj-tag">Elementor</span></div><div class="proj-links"><a href="https://nalazuritravels.com/" target="_blank" class="proj-lnk" style="color:var(--accent)">↗ nalazuritravels.com</a><span class="proj-lnk" style="color:var(--accent2)">✓ Live in Production</span></div></div>
+    </div>
+  </div>
+</section>
 
+<!-- SKILLS -->
+<section id="skills">
+  <div class="sec-hdr fade-in"><div class="sec-lbl">04 — Skills</div><h2 class="sec-ttl">The full<br>toolkit.</h2></div>
+  <div class="sk-cats">
+    <div class="sk-cat fade-in"><div class="sk-cat-ico">☕</div><div class="sk-cat-ttl">// Backend Core</div><div class="sk-cat-items"><div class="sk-cat-item"><span>Java 17+</span><div class="dot-row"><div class="dot f"></div><div class="dot f"></div><div class="dot f"></div><div class="dot f"></div><div class="dot f"></div></div></div><div class="sk-cat-item"><span>Spring Boot</span><div class="dot-row"><div class="dot f"></div><div class="dot f"></div><div class="dot f"></div><div class="dot f"></div><div class="dot f"></div></div></div><div class="sk-cat-item"><span>Spring Security</span><div class="dot-row"><div class="dot f"></div><div class="dot f"></div><div class="dot f"></div><div class="dot f"></div><div class="dot"></div></div></div><div class="sk-cat-item"><span>Spring Cloud</span><div class="dot-row"><div class="dot f"></div><div class="dot f"></div><div class="dot f"></div><div class="dot f"></div><div class="dot"></div></div></div><div class="sk-cat-item"><span>RESTful APIs</span><div class="dot-row"><div class="dot f"></div><div class="dot f"></div><div class="dot f"></div><div class="dot f"></div><div class="dot f"></div></div></div><div class="sk-cat-item"><span>JPA / Hibernate</span><div class="dot-row"><div class="dot f"></div><div class="dot f"></div><div class="dot f"></div><div class="dot f"></div><div class="dot"></div></div></div></div></div>
+    <div class="sk-cat fade-in"><div class="sk-cat-ico">⚡</div><div class="sk-cat-ttl">// Distributed Systems</div><div class="sk-cat-items"><div class="sk-cat-item"><span>Apache Kafka</span><div class="dot-row"><div class="dot f"></div><div class="dot f"></div><div class="dot f"></div><div class="dot f"></div><div class="dot"></div></div></div><div class="sk-cat-item"><span>Apache Camel (ESB)</span><div class="dot-row"><div class="dot f"></div><div class="dot f"></div><div class="dot f"></div><div class="dot f"></div><div class="dot"></div></div></div><div class="sk-cat-item"><span>Eureka (Discovery)</span><div class="dot-row"><div class="dot f"></div><div class="dot f"></div><div class="dot f"></div><div class="dot f"></div><div class="dot"></div></div></div><div class="sk-cat-item"><span>API Gateway</span><div class="dot-row"><div class="dot f"></div><div class="dot f"></div><div class="dot f"></div><div class="dot f"></div><div class="dot"></div></div></div><div class="sk-cat-item"><span>WebSockets</span><div class="dot-row"><div class="dot f"></div><div class="dot f"></div><div class="dot f"></div><div class="dot"></div><div class="dot"></div></div></div><div class="sk-cat-item"><span>Microservices Design</span><div class="dot-row"><div class="dot f"></div><div class="dot f"></div><div class="dot f"></div><div class="dot f"></div><div class="dot"></div></div></div></div></div>
+    <div class="sk-cat fade-in"><div class="sk-cat-ico">🔐</div><div class="sk-cat-ttl">// Security & Auth</div><div class="sk-cat-items"><div class="sk-cat-item"><span>JWT Authentication</span><div class="dot-row"><div class="dot f"></div><div class="dot f"></div><div class="dot f"></div><div class="dot f"></div><div class="dot f"></div></div></div><div class="sk-cat-item"><span>RBAC</span><div class="dot-row"><div class="dot f"></div><div class="dot f"></div><div class="dot f"></div><div class="dot f"></div><div class="dot"></div></div></div><div class="sk-cat-item"><span>BCrypt / Hashing</span><div class="dot-row"><div class="dot f"></div><div class="dot f"></div><div class="dot f"></div><div class="dot f"></div><div class="dot"></div></div></div><div class="sk-cat-item"><span>OTP Flows</span><div class="dot-row"><div class="dot f"></div><div class="dot f"></div><div class="dot f"></div><div class="dot f"></div><div class="dot"></div></div></div><div class="sk-cat-item"><span>OAuth2 Concepts</span><div class="dot-row"><div class="dot f"></div><div class="dot f"></div><div class="dot f"></div><div class="dot"></div><div class="dot"></div></div></div></div></div>
+    <div class="sk-cat fade-in"><div class="sk-cat-ico">🗄️</div><div class="sk-cat-ttl">// Data & Storage</div><div class="sk-cat-items"><div class="sk-cat-item"><span>MySQL</span><div class="dot-row"><div class="dot f"></div><div class="dot f"></div><div class="dot f"></div><div class="dot f"></div><div class="dot f"></div></div></div><div class="sk-cat-item"><span>PostgreSQL</span><div class="dot-row"><div class="dot f"></div><div class="dot f"></div><div class="dot f"></div><div class="dot f"></div><div class="dot"></div></div></div><div class="sk-cat-item"><span>Redis</span><div class="dot-row"><div class="dot f"></div><div class="dot f"></div><div class="dot f"></div><div class="dot f"></div><div class="dot"></div></div></div><div class="sk-cat-item"><span>Flyway (Migrations)</span><div class="dot-row"><div class="dot f"></div><div class="dot f"></div><div class="dot f"></div><div class="dot f"></div><div class="dot"></div></div></div><div class="sk-cat-item"><span>SQLite</span><div class="dot-row"><div class="dot f"></div><div class="dot f"></div><div class="dot f"></div><div class="dot f"></div><div class="dot"></div></div></div></div></div>
+    <div class="sk-cat fade-in"><div class="sk-cat-ico">💳</div><div class="sk-cat-ttl">// Payments & ESB</div><div class="sk-cat-items"><div class="sk-cat-item"><span>M-Pesa Integration</span><div class="dot-row"><div class="dot f"></div><div class="dot f"></div><div class="dot f"></div><div class="dot f"></div><div class="dot"></div></div></div><div class="sk-cat-item"><span>ISO 8583</span><div class="dot-row"><div class="dot f"></div><div class="dot f"></div><div class="dot f"></div><div class="dot f"></div><div class="dot"></div></div></div><div class="sk-cat-item"><span>ISO 20022</span><div class="dot-row"><div class="dot f"></div><div class="dot f"></div><div class="dot f"></div><div class="dot"></div><div class="dot"></div></div></div><div class="sk-cat-item"><span>Payment Gateway Design</span><div class="dot-row"><div class="dot f"></div><div class="dot f"></div><div class="dot f"></div><div class="dot f"></div><div class="dot"></div></div></div><div class="sk-cat-item"><span>ESB Integration Patterns</span><div class="dot-row"><div class="dot f"></div><div class="dot f"></div><div class="dot f"></div><div class="dot f"></div><div class="dot"></div></div></div><div class="sk-cat-item"><span>Twilio (WhatsApp/SMS)</span><div class="dot-row"><div class="dot f"></div><div class="dot f"></div><div class="dot f"></div><div class="dot"></div><div class="dot"></div></div></div></div></div>
+    <div class="sk-cat fade-in"><div class="sk-cat-ico">🛠️</div><div class="sk-cat-ttl">// DevOps & Tooling</div><div class="sk-cat-items"><div class="sk-cat-item"><span>Docker</span><div class="dot-row"><div class="dot f"></div><div class="dot f"></div><div class="dot f"></div><div class="dot f"></div><div class="dot"></div></div></div><div class="sk-cat-item"><span>CI/CD Pipelines</span><div class="dot-row"><div class="dot f"></div><div class="dot f"></div><div class="dot f"></div><div class="dot f"></div><div class="dot"></div></div></div><div class="sk-cat-item"><span>Git / GitHub</span><div class="dot-row"><div class="dot f"></div><div class="dot f"></div><div class="dot f"></div><div class="dot f"></div><div class="dot f"></div></div></div><div class="sk-cat-item"><span>Maven / Gradle</span><div class="dot-row"><div class="dot f"></div><div class="dot f"></div><div class="dot f"></div><div class="dot f"></div><div class="dot"></div></div></div><div class="sk-cat-item"><span>Linux / Shell</span><div class="dot-row"><div class="dot f"></div><div class="dot f"></div><div class="dot f"></div><div class="dot f"></div><div class="dot"></div></div></div><div class="sk-cat-item"><span>Agile / Scrum</span><div class="dot-row"><div class="dot f"></div><div class="dot f"></div><div class="dot f"></div><div class="dot f"></div><div class="dot"></div></div></div></div></div>
+    <div class="sk-cat fade-in"><div class="sk-cat-ico">🌐</div><div class="sk-cat-ttl">// Frontend</div><div class="sk-cat-items"><div class="sk-cat-item"><span>React</span><div class="dot-row"><div class="dot f"></div><div class="dot f"></div><div class="dot f"></div><div class="dot f"></div><div class="dot"></div></div></div><div class="sk-cat-item"><span>JavaScript / TypeScript</span><div class="dot-row"><div class="dot f"></div><div class="dot f"></div><div class="dot f"></div><div class="dot f"></div><div class="dot"></div></div></div><div class="sk-cat-item"><span>HTML / CSS</span><div class="dot-row"><div class="dot f"></div><div class="dot f"></div><div class="dot f"></div><div class="dot f"></div><div class="dot"></div></div></div><div class="sk-cat-item"><span>Python / Flask</span><div class="dot-row"><div class="dot f"></div><div class="dot f"></div><div class="dot f"></div><div class="dot f"></div><div class="dot"></div></div></div><div class="sk-cat-item"><span>Tailwind CSS</span><div class="dot-row"><div class="dot f"></div><div class="dot f"></div><div class="dot f"></div><div class="dot"></div><div class="dot"></div></div></div></div></div>
+    <div class="sk-cat fade-in"><div class="sk-cat-ico">🤖</div><div class="sk-cat-ttl">// AI & Emerging</div><div class="sk-cat-items"><div class="sk-cat-item"><span>LLM API Integration</span><div class="dot-row"><div class="dot f"></div><div class="dot f"></div><div class="dot f"></div><div class="dot"></div><div class="dot"></div></div></div><div class="sk-cat-item"><span>AI-Powered Backend</span><div class="dot-row"><div class="dot f"></div><div class="dot f"></div><div class="dot f"></div><div class="dot"></div><div class="dot"></div></div></div><div class="sk-cat-item"><span>Prompt Engineering</span><div class="dot-row"><div class="dot f"></div><div class="dot f"></div><div class="dot f"></div><div class="dot"></div><div class="dot"></div></div></div><div class="sk-cat-item"><span>RAG / Vector DBs</span><div class="dot-row"><div class="dot f"></div><div class="dot f"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div></div><div class="sk-cat-item"><span>ML Pipeline Concepts</span><div class="dot-row"><div class="dot f"></div><div class="dot f"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div></div></div></div>
+    <div class="sk-cat fade-in"><div class="sk-cat-ico">📡</div><div class="sk-cat-ttl">// Telecommunications</div><div class="sk-cat-items"><div class="sk-cat-item"><span>CNS Systems</span><div class="dot-row"><div class="dot f"></div><div class="dot f"></div><div class="dot f"></div><div class="dot f"></div><div class="dot f"></div></div></div><div class="sk-cat-item"><span>VHF/UHF Radio Systems</span><div class="dot-row"><div class="dot f"></div><div class="dot f"></div><div class="dot f"></div><div class="dot f"></div><div class="dot f"></div></div></div><div class="sk-cat-item"><span>Radar & ADS-B</span><div class="dot-row"><div class="dot f"></div><div class="dot f"></div><div class="dot f"></div><div class="dot f"></div><div class="dot"></div></div></div><div class="sk-cat-item"><span>Network Architecture</span><div class="dot-row"><div class="dot f"></div><div class="dot f"></div><div class="dot f"></div><div class="dot f"></div><div class="dot"></div></div></div><div class="sk-cat-item"><span>Signal Processing</span><div class="dot-row"><div class="dot f"></div><div class="dot f"></div><div class="dot f"></div><div class="dot f"></div><div class="dot"></div></div></div></div></div>
+  </div>
+</section>
 
-              </p>
-            </div>
-          </div>
-          <div class="panel__grid" data-panel="2">
-            <div class="panel__card">
-              <span><i class="ri-macbook-fill"></i></span>
-              <h4>CNS Assistant Engineer</h4>
-              <p class="section__description">
-                Optimizing Networks, Connecting the World
-              </p>
-              <p class="section__description">
-                In the role of an Assistant Communication Navigation and Surveillance (CNS) Engineer, I have developed expertise in ensuring robust and efficient communication and navigation systems. I specialize in optimizing functionality while maintaining a user-centric approach to design and implementation.
+<!-- CERTIFICATIONS -->
+<section style="background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:6rem 4rem;">
+  <div style="max-width:1200px;margin:0 auto">
+    <div class="sec-hdr fade-in"><div class="sec-lbl">// verified credentials</div><h2 class="sec-ttl" style="font-size:clamp(1.8rem,3vw,2.5rem)">Certifications<br>& Badges.</h2></div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.25rem">
+      <a href="https://catalog-education.oracle.com/ords/certview/sharebadge?id=0822D96F08106FE2BA4DEC46A349C8F50ABA1EFE418EC292770EED554668EDAF" target="_blank" class="sk-cat fade-in" style="text-decoration:none;border-color:rgba(255,107,53,.35)"><div style="display:flex;align-items:flex-start;gap:1rem;margin-bottom:1rem"><div style="width:44px;height:44px;background:rgba(255,107,53,.15);border:1px solid rgba(255,107,53,.3);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0">☁</div><div><div style="font-size:.95rem;font-weight:600;color:var(--text);line-height:1.3">Oracle Cloud Infrastructure 2025</div><div style="font-size:.85rem;font-weight:600;color:var(--text)">Certified Foundations Associate</div></div></div><div style="font-family:var(--mono);font-size:.68rem;color:var(--accent3);margin-bottom:.75rem">Oracle · Oct 2025</div><div class="stk-grid"><span class="stk-tag" style="border-color:rgba(255,107,53,.2);color:var(--accent3)">OCI Compute</span><span class="stk-tag" style="border-color:rgba(255,107,53,.2);color:var(--accent3)">OCI Storage</span><span class="stk-tag" style="border-color:rgba(255,107,53,.2);color:var(--accent3)">OCI Networking</span><span class="stk-tag" style="border-color:rgba(255,107,53,.2);color:var(--accent3)">OCI Security</span></div><div style="font-family:var(--mono);font-size:.7rem;color:var(--accent);margin-top:1rem">↗ View Badge</div></a>
+      <a href="https://www.linkedin.com/learning/certificates/5f32976ee41b749c07aea7a4096303525393e4774a92301a9ec1c9890a9b4ea2" target="_blank" class="sk-cat fade-in" style="text-decoration:none;border-color:rgba(0,212,255,.3)"><div style="display:flex;align-items:flex-start;gap:1rem;margin-bottom:1rem"><div style="width:44px;height:44px;background:rgba(0,212,255,.1);border:1px solid rgba(0,212,255,.25);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0">🧪</div><div><div style="font-size:.95rem;font-weight:600;color:var(--text);line-height:1.3">Test-Driven Development</div><div style="font-size:.85rem;font-weight:600;color:var(--text)">Spring Boot — JUnit & Mockito</div></div></div><div style="font-family:var(--mono);font-size:.68rem;color:var(--accent);margin-bottom:.75rem">LinkedIn Learning · Jan 2026</div><div class="stk-grid"><span class="stk-tag">JUnit 5</span><span class="stk-tag">Mockito</span><span class="stk-tag">Spring Boot Test</span><span class="stk-tag">TDD</span></div><div style="font-family:var(--mono);font-size:.7rem;color:var(--accent);margin-top:1rem">↗ View Certificate</div></a>
+      <a href="https://www.coursera.org/account/accomplishments/verify/JVPXJ4P9ATSF" target="_blank" class="sk-cat fade-in" style="text-decoration:none;border-color:rgba(0,255,136,.25)"><div style="display:flex;align-items:flex-start;gap:1rem;margin-bottom:1rem"><div style="width:44px;height:44px;background:rgba(0,255,136,.08);border:1px solid rgba(0,255,136,.2);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0">🐧</div><div><div style="font-size:.95rem;font-weight:600;color:var(--text);line-height:1.3">Linux, Cloud & DevOps</div><div style="font-size:.85rem;font-weight:600;color:var(--text)">Essentials Certification</div></div></div><div style="font-family:var(--mono);font-size:.68rem;color:var(--accent2);margin-bottom:.75rem">Coursera · Nov 2022</div><div class="stk-grid"><span class="stk-tag" style="border-color:rgba(0,255,136,.15);color:var(--accent2)">Linux</span><span class="stk-tag" style="border-color:rgba(0,255,136,.15);color:var(--accent2)">Cloud Computing</span><span class="stk-tag" style="border-color:rgba(0,255,136,.15);color:var(--accent2)">Docker</span><span class="stk-tag" style="border-color:rgba(0,255,136,.15);color:var(--accent2)">IaaS/PaaS</span><span class="stk-tag" style="border-color:rgba(0,255,136,.15);color:var(--accent2)">Git</span></div><div style="font-family:var(--mono);font-size:.7rem;color:var(--accent);margin-top:1rem">↗ Verify</div></a>
+    </div>
+  </div>
+</section>
 
-
-              </p>
-            </div>
-            <div class="panel__card">
-              <span><i class="ri-macbook-fill"></i></span>
-              <h4>Entry-Level Front-End Developer</h4>
-              <p class="section__description">Crafting intuitive user interfaces with code.</p>
-              <p class="section__description">
-                As an Entry-Level Frontend Developer, I am dedicated to mastering user-centric design principles and integrating them with functional code. I strive to create intuitive and engaging user interfaces that enhance user experience and satisfaction.
-
-
-              </p>
-            </div>
-            <div class="panel__card">
-              <span><i class="ri-macbook-fill"></i></span>
-              <h4>Assistant Telecommunication Technician</h4>
-              <p class="section__description">Enhancing connectivity through robust network solutions</p>
-              <p class="section__description">
-                As an Assistant Telecommunications Engineer at an ISP Company, I specialize in maintaining and optimizing network infrastructure to deliver reliable internet services. My role involves troubleshooting, upgrading, and ensuring seamless connectivity for customers.
-              </p>
-            </div>
-          </div>
-        </div>
+<!-- LEARNING + GITHUB -->
+<section style="padding:6rem 4rem;max-width:1200px;margin:0 auto">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start" class="lg-grid">
+    <div class="fade-in">
+      <div class="sec-lbl">// always growing</div>
+      <h3 style="font-size:1.6rem;font-weight:700;letter-spacing:-.02em;margin-bottom:2rem">Currently<br>Learning.</h3>
+      <div style="display:flex;flex-direction:column;gap:.85rem">
+        <div class="learn-item" style="display:flex;align-items:center;gap:1rem;padding:1rem 1.25rem;background:var(--surface);border:1px solid var(--border);border-radius:6px;transition:border-color .3s,background .4s"><div style="width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px rgba(0,212,255,.5);flex-shrink:0;animation:pulse 2s ease infinite"></div><div><div style="font-size:.9rem;font-weight:600;color:var(--text)">Kubernetes & Container Orchestration</div><div style="font-family:var(--mono);font-size:.68rem;color:var(--text-muted);margin-top:.2rem">k8s · Helm · Service Mesh</div></div></div>
+        <div class="learn-item" style="display:flex;align-items:center;gap:1rem;padding:1rem 1.25rem;background:var(--surface);border:1px solid var(--border);border-radius:6px;transition:border-color .3s,background .4s"><div style="width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px rgba(0,212,255,.5);flex-shrink:0;animation:pulse 2s ease infinite .4s"></div><div><div style="font-size:.9rem;font-weight:600;color:var(--text)">Spring AI Framework</div><div style="font-family:var(--mono);font-size:.68rem;color:var(--text-muted);margin-top:.2rem">LLM integration · RAG pipelines · AI-powered APIs</div></div></div>
+        <div class="learn-item" style="display:flex;align-items:center;gap:1rem;padding:1rem 1.25rem;background:var(--surface);border:1px solid var(--border);border-radius:6px;transition:border-color .3s,background .4s"><div style="width:8px;height:8px;border-radius:50%;background:var(--accent2);box-shadow:0 0 10px rgba(0,255,136,.4);flex-shrink:0;animation:pulse 2s ease infinite .8s"></div><div><div style="font-size:.9rem;font-weight:600;color:var(--text)">AWS Cloud Practitioner</div><div style="font-family:var(--mono);font-size:.68rem;color:var(--text-muted);margin-top:.2rem">EC2 · S3 · RDS · Lambda · IAM</div></div></div>
+        <div class="learn-item" style="display:flex;align-items:center;gap:1rem;padding:1rem 1.25rem;background:var(--surface);border:1px solid var(--border);border-radius:6px;transition:border-color .3s,background .4s"><div style="width:8px;height:8px;border-radius:50%;background:var(--accent2);flex-shrink:0;animation:pulse 2s ease infinite 1.2s"></div><div><div style="font-size:.9rem;font-weight:600;color:var(--text)">Apache Kafka Streams</div><div style="font-family:var(--mono);font-size:.68rem;color:var(--text-muted);margin-top:.2rem">Real-time stream processing · KSQL · Windowing</div></div></div>
+        <div class="learn-item" style="display:flex;align-items:center;gap:1rem;padding:1rem 1.25rem;background:var(--surface);border:1px solid var(--border);border-radius:6px;transition:border-color .3s,background .4s"><div style="width:8px;height:8px;border-radius:50%;background:var(--accent3);flex-shrink:0;animation:pulse 2s ease infinite 1.6s"></div><div><div style="font-size:.9rem;font-weight:600;color:var(--text)">System Design Patterns</div><div style="font-family:var(--mono);font-size:.68rem;color:var(--text-muted);margin-top:.2rem">CQRS · Event Sourcing · Saga · Outbox Pattern</div></div></div>
       </div>
-    </section>
-
-    <section class="banner">
-      <div class="section__container banner__container">
-        <div class="banner__card">
-          <h4>2+</h4>
-          <p>Years of Experience</p>
-        </div>
-        <div class="banner__card">
-          <h4>20+</h4>
-          <p>Completed Projects</p>
-        </div>
-        <div class="banner__card">
-          <h4>15+</h4>
-          <p>Satisfied Clients</p>
-        </div>
-        <div class="banner__card">
-          <h4>15+</h4>
-          <p>Global Reach</p>
-        </div>
-      </div>
-    </section>
-
-  <section class="client">
-  <div class="section__container client__container">
-    <h2 class="section__header">Happy Clients Say</h2>
-    <p class="section__description">
-      The seamless integration of innovation and user-centric design in their work has left a lasting impression on our clients and elevated our digital presence.
-    </p>
-    <div class="swiper">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide">
-          <div class="client__card">
-            <p>
-              Their ability to create visually stunning and highly functional designs is exceptional. As the CEO of Air Fly Drone Dynamics, I have witnessed firsthand the positive impact they have on our projects.
-            </p>
-            <h4>Master Clinton</h4>
-            <h5>CEO, Air Fly Drone Dynamics</h5>
-            <img src="./Assets/Client.jpg" alt="Master Clinton, CEO of Air Fly Drone Dynamics" />
-          </div>
-        </div>
-        <div class="swiper-slide">
-          <div class="client__card">
-            <p>
-              Working with Blair was a revelation! Their works and projects not only captured the essence of our brand but elevated it to new heights.
-            </p>
-            <h4>Wendylicious M.</h4>
-            <h5>Marketing Director, Tech Innovations Inc.</h5>
-            <img src="assets/client-2.jpg" alt="Wendylicious M., Marketing Director at Tech Innovations Inc." />
-          </div>
-        </div>
-        <div class="swiper-slide">
-          <div class="client__card">
-            <p>
-              I had the pleasure of collaborating with them on a critical project for Innovate Startups. Their ability to translate our brand vision into a visually compelling user experience was truly impressive.
-            </p>
-            <h4>Tsar Cypher</h4>
-            <h5>Founder, Byte Bender404</h5>
-            <img src="assets/client-3.jpg" alt="Tsar Cypher, Founder of Byte Bender404" />
-          </div>
+    </div>
+    <div class="fade-in" style="transition-delay:.2s">
+      <div class="sec-lbl">// open source activity</div>
+      <h3 style="font-size:1.6rem;font-weight:700;letter-spacing:-.02em;margin-bottom:2rem">GitHub<br>Activity.</h3>
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;overflow:hidden;transition:background .4s,border-color .4s">
+        <div style="padding:1rem 1.25rem;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between"><div style="font-family:var(--mono);font-size:.72rem;color:var(--text-dim)">@BlairMutisya</div><a href="https://github.com/BlairMutisya" target="_blank" style="font-family:var(--mono);font-size:.68rem;color:var(--accent);text-decoration:none">↗ View Profile</a></div>
+        <div style="padding:1.25rem;overflow:hidden"><img id="gh-chart" src="https://ghchart.rshah.org/00D4FF/BlairMutisya" alt="GitHub contributions" style="width:100%;border-radius:4px;filter:brightness(.9) contrast(1.1)" onerror="this.parentElement.innerHTML='<div style=\'font-family:var(--mono);font-size:.75rem;color:var(--text-muted);text-align:center;padding:2rem\'>// visit github.com/BlairMutisya</div>'"></div>
+        <div style="padding:0 1.25rem 1.25rem;display:flex;gap:.75rem;flex-wrap:wrap">
+          <div style="flex:1;min-width:70px;background:rgba(0,212,255,.06);border:1px solid var(--border);border-radius:6px;padding:.75rem;text-align:center"><div style="font-family:var(--mono);font-size:1.1rem;font-weight:700;color:var(--accent)">8+</div><div style="font-family:var(--mono);font-size:.62rem;color:var(--text-muted);margin-top:.2rem">Repos</div></div>
+          <div style="flex:1;min-width:70px;background:rgba(0,212,255,.06);border:1px solid var(--border);border-radius:6px;padding:.75rem;text-align:center"><div style="font-family:var(--mono);font-size:1.1rem;font-weight:700;color:var(--accent2)">Java</div><div style="font-family:var(--mono);font-size:.62rem;color:var(--text-muted);margin-top:.2rem">Primary</div></div>
+          <div style="flex:1;min-width:70px;background:rgba(0,212,255,.06);border:1px solid var(--border);border-radius:6px;padding:.75rem;text-align:center"><div style="font-family:var(--mono);font-size:1.1rem;font-weight:700;color:var(--accent3)">Active</div><div style="font-family:var(--mono);font-size:.62rem;color:var(--text-muted);margin-top:.2rem">Status</div></div>
         </div>
       </div>
     </div>
   </div>
 </section>
+<style>@media(max-width:900px){.lg-grid{grid-template-columns:1fr!important;gap:3rem!important}}</style>
 
+<!-- EDUCATION -->
+<section id="education" style="max-width:1200px;margin:0 auto;padding:6rem 4rem">
+  <div class="sec-hdr fade-in"><div class="sec-lbl">06 — Education</div><h2 class="sec-ttl">Where I<br>learned to think.</h2></div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.5rem">
+    <div class="sk-cat fade-in" style="border-color:rgba(0,212,255,.25)"><div style="display:flex;align-items:center;gap:.75rem;margin-bottom:1rem"><div style="font-size:1.5rem">🎓</div><div><div class="sk-cat-ttl" style="margin-bottom:0">Full Stack Software Development</div><div style="font-family:var(--mono);font-size:.68rem;color:var(--accent);margin-top:.2rem">Moringa School</div></div></div><div style="font-family:var(--mono);font-size:.68rem;color:var(--text-muted);margin-bottom:.85rem">Feb 2024 – Aug 2024</div><div class="stk-grid"><span class="stk-tag">HTML5/CSS</span><span class="stk-tag">JavaScript</span><span class="stk-tag">React</span><span class="stk-tag">Python</span><span class="stk-tag">Flask</span><span class="stk-tag">MySQL</span><span class="stk-tag">Git</span><span class="stk-tag">Redux</span></div></div>
+    <div class="sk-cat fade-in" style="border-color:rgba(0,212,255,.25)"><div style="display:flex;align-items:center;gap:.75rem;margin-bottom:1rem"><div style="font-size:1.5rem">📡</div><div><div class="sk-cat-ttl" style="margin-bottom:0">Diploma — Electrical & Electronics Eng.</div><div style="font-family:var(--mono);font-size:.68rem;color:var(--accent);margin-top:.2rem">East African School of Aviation</div></div></div><div style="font-family:var(--mono);font-size:.68rem;color:var(--text-muted);margin-bottom:.85rem">Oct 2020 – Jul 2023 · Telecom Option</div><div class="stk-grid"><span class="stk-tag">Communication Systems</span><span class="stk-tag">CNS Infrastructure</span><span class="stk-tag">Computer Networks</span><span class="stk-tag">Data Communication</span><span class="stk-tag">Microprocessors</span></div></div>
+    <div class="sk-cat fade-in" style="border-color:rgba(0,212,255,.25)"><div style="display:flex;align-items:center;gap:.75rem;margin-bottom:1rem"><div style="font-size:1.5rem">💻</div><div><div class="sk-cat-ttl" style="margin-bottom:0">Computer Applications</div><div style="font-family:var(--mono);font-size:.68rem;color:var(--accent);margin-top:.2rem">Skill Solve Computer College</div></div></div><div style="font-family:var(--mono);font-size:.68rem;color:var(--text-muted);margin-bottom:.85rem">Mar 2020 – Apr 2020</div><div class="stk-grid"><span class="stk-tag">MS Office Suite</span><span class="stk-tag">Excel</span><span class="stk-tag">Access</span><span class="stk-tag">Adobe PageMaker</span></div></div>
+  </div>
+</section>
 
-<section class="section__container blog__container" id="projects">
-  <h2 class="section__header">Featured Projects</h2>
-  <div class="blog__grid">
-    <div class="blog__card">
-      <img src="./Assets/Production.png" alt="Project 1" />
-      <div class="blog__content">
-        <h4>Innovative E-commerce Platform</h4>
-        <p class="section__description">
-          A seamless and dynamic e-commerce experience built with React and Tailwind CSS. Features include product listings, user authentication, and payment gateway integration.
-        </p>
-        <div>
-          <a href="#">View Project</a>
-          <div class="blog__socials">
-            <a href="#"><i class="ri-github-fill"></i></a>
-            <a href="#"><i class="ri-linkedin-fill"></i></a>
-          </div>
-        </div>
-      </div>
+<!-- BUY ME A COFFEE -->
+<section style="background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:5rem 4rem">
+  <div style="max-width:700px;margin:0 auto;text-align:center">
+    <div class="sec-lbl fade-in">support the work</div>
+    <h2 class="sec-ttl fade-in" style="font-size:clamp(1.8rem,3.5vw,2.5rem);margin-bottom:1rem">Like what you see?<br>Buy me a coffee ☕</h2>
+    <p class="sec-sub fade-in" style="margin:0 auto 2.5rem">If my work has helped you or you'd like to support open-source projects, contributions are always appreciated — in KES or USD.</p>
+    <div style="display:flex;justify-content:center;gap:1rem;flex-wrap:wrap" class="fade-in">
+      <a href="https://www.buymeacoffee.com/YOUR_USERNAME" target="_blank" style="display:inline-flex;align-items:center;gap:.6rem;padding:.9rem 2rem;background:#FFDD00;color:#000;font-family:var(--mono);font-size:.85rem;font-weight:700;border-radius:6px;text-decoration:none;transition:all .2s" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 30px rgba(255,221,0,.3)'" onmouseout="this.style.transform='none';this.style.boxShadow='none'">☕ Buy Me a Coffee (USD)</a>
+      <a href="https://ko-fi.com/YOUR_USERNAME" target="_blank" style="display:inline-flex;align-items:center;gap:.6rem;padding:.9rem 2rem;background:transparent;color:var(--accent);font-family:var(--mono);font-size:.85rem;font-weight:700;border-radius:6px;text-decoration:none;border:1px solid var(--accent);transition:all .2s" onmouseover="this.style.background='rgba(0,212,255,.08)';this.style.transform='translateY(-2px)'" onmouseout="this.style.background='transparent';this.style.transform='none'">🇰🇪 Support via Ko-fi (KES)</a>
     </div>
-    <div class="blog__card">
-      <img src="./Assets/EventManagement.png" alt="Project 2" />
-      <div class="blog__content">
-        <h4>Event Management System</h4>
-        <p class="section__description">
-          A full-stack platform using Flask and React for creating, managing, and booking events. Includes user roles, CRUD operations, and a comprehensive admin dashboard.
-        </p>
-        <div>
-          <a href="#">View Project</a>
-          <div class="blog__socials">
-            <a href="#"><i class="ri-github-fill"></i></a>
-            <a href="#"><i class="ri-linkedin-fill"></i></a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="blog__card">
-      <img src="./Assets/TheGroove.png" alt="Project 3" />
-      <div class="blog__content">
-        <h4>Space Rental Website</h4>
-        <p class="section__description">
-          A responsive space rental platform built with Flask and React, featuring an integrated M-Pesa payment gateway, user reviews, and space booking functionality.
-        </p>
-        <div>
-          <a href="#">View Project</a>
-          <div class="blog__socials">
-            <a href="#"><i class="ri-github-fill"></i></a>
-            <a href="#"><i class="ri-linkedin-fill"></i></a>
-          </div>
-        </div>
-      </div>
+    <div style="margin-top:2.5rem;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.5rem;text-align:left;transition:background .4s" class="fade-in">
+      <div style="font-family:var(--mono);font-size:.68rem;color:var(--accent);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.75rem">// setup instructions (delete before deploy)</div>
+      <div style="font-family:var(--mono);font-size:.78rem;color:var(--text-dim);line-height:2"><div><span style="color:var(--accent2)">1.</span> buymeacoffee.com → sign up → get username</div><div><span style="color:var(--accent2)">2.</span> Replace <span style="color:var(--accent3)">YOUR_USERNAME</span> in both buttons above</div><div><span style="color:var(--accent2)">3.</span> Ko-fi supports PayPal (KES from Kenyan banks)</div><div><span style="color:var(--accent2)">4.</span> Delete this box before going live 🚀</div></div>
     </div>
   </div>
 </section>
 
-
-    <footer class="footer" id="contact">
-      <div class="section__container footer__container">
-        <h2 class="section__header">24/7 Support Hello Says</h2>
-        <p class="section__description">
-          A testament to our commitment, these testimonials showcase the
-          satisfaction of clients who've experienced our 24/7 support.
-        </p>
-        <div class="footer__grid">
-          <div class="footer__content">
-            <h4>Blair Vullu</h4>
-            <p>
-              Explore more of my work, connect with me on social media, or drop
-              a message.
-            </p>
-            <p>
-              Let's continue the design conversation and embark on new creative
-              journeys together.
-            </p>
-            <p>Thank you for visiting!</p>
-            <div class="footer__socials">
-              <a href="#"><i class="ri-facebook-fill"></i></a>
-              <a href="#"><i class="ri-twitter-fill"></i></a>
-              <a href="#"><i class="ri-linkedin-fill"></i></a>
-            </div>
-          </div>
-          <div class="footer__form">
-            <form action="/">
-              <div class="input__row">
-                <input type="text" placeholder="Your Name" />
-                <input type="text" placeholder="Your Email" />
-              </div>
-              <textarea placeholder="Your Message"></textarea>
-              <button class="btn btn__primary">Send Message</button>
-            </form>
-          </div>
-        </div>
+<!-- CONTACT -->
+<section id="contact" style="background:var(--bg);border-top:1px solid var(--border)">
+  <div class="c-inner" style="padding:6rem 4rem">
+    <div class="sec-lbl fade-in">07 — Contact</div>
+    <h2 class="sec-ttl fade-in">Let's build<br>something.</h2>
+    <p class="sec-sub fade-in" style="margin:1rem auto 3rem">Open to new opportunities, collaborations, and backend engineering challenges. Drop a message — I'll respond promptly.</p>
+    <div class="c-grid fade-in">
+      <a href="mailto:tonnyblair09@gmail.com" class="c-card"><div class="c-ico">✉</div><div><div class="c-lbl">Email</div><div class="c-val">tonnyblair09@gmail.com</div></div></a>
+      <a href="https://www.linkedin.com/in/blair-vullu-59a829217/" target="_blank" class="c-card"><div class="c-ico" style="font-family:var(--mono);font-weight:700">in</div><div><div class="c-lbl">LinkedIn</div><div class="c-val">Blair Vullu</div></div></a>
+      <a href="https://github.com/BlairMutisya" target="_blank" class="c-card"><div class="c-ico">⌥</div><div><div class="c-lbl">GitHub</div><div class="c-val">@BlairMutisya</div></div></a>
+    </div>
+    <div class="c-form fade-in" style="margin-top:2.5rem">
+      <div id="form-ok" style="display:none;font-family:var(--mono);font-size:.85rem;color:var(--accent2);padding:1rem;background:rgba(0,255,136,.08);border:1px solid rgba(0,255,136,.2);border-radius:6px;margin-bottom:1rem">✓ Message sent! I'll get back to you shortly.</div>
+      <div id="form-err" style="display:none;font-family:var(--mono);font-size:.85rem;color:var(--accent3);padding:1rem;background:rgba(255,107,53,.08);border:1px solid rgba(255,107,53,.2);border-radius:6px;margin-bottom:1rem">✗ Something went wrong. Email me at tonnyblair09@gmail.com</div>
+      <div class="f-row">
+        <div class="f-grp"><label>Name</label><input type="text" id="c-name" placeholder="Your name" required></div>
+        <div class="f-grp"><label>Email</label><input type="email" id="c-email" placeholder="your@email.com" required></div>
       </div>
-      <div class="footer__bar">
-        Copyright ©Blair 2024 Web Design Mastery. All rights reserved.
-      </div>
-    </footer>
+      <div class="f-grp"><label>Subject</label><input type="text" id="c-subject" placeholder="What's this about?"></div>
+      <div class="f-grp"><label>Message</label><textarea id="c-msg" placeholder="Tell me about your project or opportunity..."></textarea></div>
+      <button class="btn-p" id="send-btn" onclick="sendEmail()" style="width:fit-content">Send Message →</button>
+    </div>
+  </div>
+</section>
 
-    <script src="https://unpkg.com/scrollreveal"></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-    <script src="script.js"></script>
-    
-  </body>
+<!-- FOOTER -->
+<footer>
+  <div class="f-logo">blair.vullu</div>
+  <div class="f-copy">© 2025 Blair Vullu · Nairobi, Kenya</div>
+  <div class="f-links">
+    <a href="#home">top</a><a href="#projects">projects</a>
+    <a href="https://github.com/BlairMutisya" target="_blank">github</a>
+    <a href="#contact">contact</a>
+  </div>
+</footer>
+
+<script>
+/* ── THEME ── */
+function toggleTheme() {
+  const html = document.documentElement;
+  const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+  html.setAttribute('data-theme', next);
+  const ico = document.getElementById('t-ico');
+  const lbl = document.querySelector('.t-lbl');
+  const chart = document.getElementById('gh-chart');
+  if (next === 'light') {
+    if (ico) ico.textContent = '🌙';
+    if (lbl) lbl.textContent = 'DARK';
+    if (chart) chart.src = 'https://ghchart.rshah.org/0084B4/BlairMutisya';
+  } else {
+    if (ico) ico.textContent = '☀️';
+    if (lbl) lbl.textContent = 'LIGHT';
+    if (chart) chart.src = 'https://ghchart.rshah.org/00D4FF/BlairMutisya';
+  }
+  localStorage.setItem('pf-theme', next);
+}
+(function(){
+  const s = localStorage.getItem('pf-theme');
+  if (s === 'light') {
+    document.documentElement.setAttribute('data-theme','light');
+    window.addEventListener('DOMContentLoaded', () => {
+      const i = document.getElementById('t-ico'), l = document.querySelector('.t-lbl');
+      if(i) i.textContent = '🌙'; if(l) l.textContent = 'DARK';
+    });
+  }
+})();
+
+/* ── CURSOR ── */
+const dot = document.getElementById('cur-dot');
+const ring = document.getElementById('cur-ring');
+const trail = document.getElementById('cur-trail');
+let mx=0,my=0,rx=0,ry=0,tx=0,ty=0;
+
+document.addEventListener('mousemove', e => {
+  mx = e.clientX; my = e.clientY;
+  dot.style.left = mx+'px'; dot.style.top = my+'px';
+});
+document.addEventListener('mouseleave', () => { dot.style.opacity='0'; ring.style.opacity='0'; trail.style.opacity='0'; });
+document.addEventListener('mouseenter', () => { dot.style.opacity='1'; ring.style.opacity='.7'; trail.style.opacity='.3'; });
+
+(function cursorLoop() {
+  rx += (mx-rx)*0.16; ry += (my-ry)*0.16;
+  ring.style.left=rx+'px'; ring.style.top=ry+'px';
+  tx += (mx-tx)*0.07; ty += (my-ty)*0.07;
+  trail.style.left=tx+'px'; trail.style.top=ty+'px';
+  requestAnimationFrame(cursorLoop);
+})();
+
+// Hover effects
+document.querySelectorAll('a,button').forEach(el => {
+  el.addEventListener('mouseenter', () => {
+    ring.style.width='54px'; ring.style.height='54px'; ring.style.borderColor='var(--accent2)'; ring.style.opacity='1';
+    dot.style.width='4px'; dot.style.height='4px'; dot.style.background='var(--accent2)';
+  });
+  el.addEventListener('mouseleave', () => {
+    ring.style.width='36px'; ring.style.height='36px'; ring.style.borderColor='var(--accent)'; ring.style.opacity='.7';
+    dot.style.width='8px'; dot.style.height='8px'; dot.style.background='var(--accent)';
+  });
+});
+
+/* ── SCROLL CHARACTER ── */
+const charEl = document.getElementById('scroll-char');
+const progEl = document.getElementById('scroll-progress');
+let charX=0, targetX=0, charFacing=1, lastScroll=0, stopTmr=null, walking=false;
+
+window.addEventListener('scroll', () => {
+  const sy = window.scrollY;
+  const dh = document.documentElement.scrollHeight - window.innerHeight;
+  const pct = dh > 0 ? sy/dh : 0;
+  if (progEl) progEl.style.width = (pct*100)+'%';
+
+  const vel = sy - lastScroll;
+  lastScroll = sy;
+  const margin = 30;
+  targetX = margin + pct * (window.innerWidth - margin*2 - 40);
+
+  if (vel > 0.5) charFacing = 1;
+  else if (vel < -0.5) charFacing = -1;
+
+  if (Math.abs(vel) > 0.5) {
+    if (!walking) { walking=true; charEl.classList.remove('stopped'); }
+    clearTimeout(stopTmr);
+    stopTmr = setTimeout(() => { walking=false; charEl.classList.add('stopped'); }, 180);
+  }
+}, { passive: true });
+
+(function charLoop() {
+  charX += (targetX - charX) * 0.1;
+  if (charEl) charEl.style.transform = `translateX(${charX}px) scaleX(${charFacing})`;
+  requestAnimationFrame(charLoop);
+})();
+
+/* ── TYPED TEXT ── */
+const titles = ["Backend Software Engineer","Spring Boot Specialist","Microservices Architect","Distributed Systems Dev","Java Engineer"];
+let ti=0,ci=0,del=false;
+const tel = document.getElementById('typed-text');
+function typeLoop() {
+  if(!tel) return;
+  const w = titles[ti];
+  if(!del){ tel.textContent=w.slice(0,ci+1); ci++; if(ci===w.length){setTimeout(()=>{del=true;typeLoop()},2200);return;} }
+  else{ tel.textContent=w.slice(0,ci-1); ci--; if(ci===0){del=false;ti=(ti+1)%titles.length;} }
+  setTimeout(typeLoop, del?40:80);
+}
+typeLoop();
+
+/* ── HAMBURGER ── */
+const hbg = document.getElementById('hbg');
+const nl = document.getElementById('nav-links');
+hbg.addEventListener('click', () => nl.classList.toggle('open'));
+nl.addEventListener('click', () => nl.classList.remove('open'));
+
+/* ── SCROLL REVEAL ── */
+const obs = new IntersectionObserver(entries => entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); }), {threshold:.1});
+document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>
+  const EMAILJS_SERVICE_ID  = 'YOUR_SERVICE_ID';
+  const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID';
+  const EMAILJS_PUBLIC_KEY  = 'YOUR_PUBLIC_KEY';
+  emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+
+  function sendEmail() {
+    const name = document.getElementById('c-name').value.trim();
+    const email = document.getElementById('c-email').value.trim();
+    const subject = document.getElementById('c-subject').value.trim();
+    const message = document.getElementById('c-msg').value.trim();
+    if(!name||!email||!message){alert('Please fill in name, email, and message.');return;}
+    const btn = document.getElementById('send-btn');
+    btn.textContent='Sending...'; btn.disabled=true;
+    emailjs.send(EMAILJS_SERVICE_ID,EMAILJS_TEMPLATE_ID,{from_name:name,from_email:email,subject:subject||'Portfolio Contact',message})
+    .then(()=>{
+      document.getElementById('form-ok').style.display='block';
+      document.getElementById('form-err').style.display='none';
+      ['c-name','c-email','c-subject','c-msg'].forEach(id=>document.getElementById(id).value='');
+      btn.textContent='Send Message →'; btn.disabled=false;
+    }).catch(err=>{
+      console.error(err);
+      document.getElementById('form-err').style.display='block';
+      document.getElementById('form-ok').style.display='none';
+      btn.textContent='Send Message →'; btn.disabled=false;
+    });
+  }
+</script>
+</body>
 </html>
