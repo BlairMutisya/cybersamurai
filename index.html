@@ -167,6 +167,45 @@
     .proj-links{display:flex;gap:1rem;flex-wrap:wrap}
     .proj-lnk{font-family:var(--mono);font-size:.75rem;color:var(--text-dim);text-decoration:none;display:flex;align-items:center;gap:.35rem;transition:color .2s}
     .proj-lnk:hover{color:var(--accent)}
+    .project-filters{display:flex;gap:.6rem;flex-wrap:wrap;margin:-1.5rem 0 2rem}
+    .filter-btn{font-family:var(--mono);font-size:.7rem;padding:.55rem .9rem;background:var(--surface);border:1px solid var(--border);border-radius:100px;color:var(--text-dim);cursor:pointer;transition:all .2s}
+    .filter-btn:hover,.filter-btn.active{border-color:var(--accent);background:rgba(0,212,255,.1);color:var(--accent)}
+    .proj-card.is-hidden{display:none}
+    .project-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem;margin:1rem 0 1.25rem}
+    .metric{padding:.65rem;background:rgba(0,212,255,.05);border:1px solid var(--border);border-radius:5px}
+    .metric strong{display:block;font-family:var(--mono);font-size:.88rem;color:var(--accent)}
+    .metric span{font-family:var(--mono);font-size:.58rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:.04em}
+    .case-study{position:relative;border-top:1px solid var(--border);padding-top:1rem;margin-top:.25rem}
+    .case-study summary{font-family:var(--mono);font-size:.72rem;color:var(--accent);cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:1rem}
+    .case-study summary::-webkit-details-marker{display:none}.case-study summary::after{content:'+'}.case-study[open] summary::after{content:'−'}
+    .case-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1rem}
+    .case-block h4{font-family:var(--mono);font-size:.62rem;color:var(--accent3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.35rem}
+    .case-block p{font-size:.78rem;color:var(--text-dim);line-height:1.55}
+    .arch{display:flex;align-items:center;justify-content:center;gap:.35rem;flex-wrap:wrap;margin-top:1rem;padding:1rem;background:rgba(0,0,0,.16);border:1px solid var(--border);border-radius:6px}
+    .arch-node{font-family:var(--mono);font-size:.61rem;padding:.42rem .55rem;border:1px solid var(--border2);border-radius:4px;color:var(--text);text-align:center;background:var(--surface2)}
+    .arch-arrow{font-family:var(--mono);font-size:.75rem;color:var(--accent)}
+
+    /* EXPERIENCE LEVELS */
+    .capability-stack{display:grid;gap:1rem;margin-top:1rem}
+    .capability-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.25rem}
+    .capability-card h3{font-family:var(--mono);font-size:.72rem;color:var(--accent);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.75rem}
+    .capability-card p{font-size:.82rem;color:var(--text-dim);line-height:1.6;margin-bottom:.8rem}
+    .capability-card.learning{border-color:rgba(255,107,53,.25)}
+
+    /* ENGINEERING NOTES */
+    #notes{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+    .notes-wrap{max-width:1200px;margin:0 auto}.notes-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+    .note-card{display:block;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.5rem;text-decoration:none;transition:all .25s}
+    .note-card:hover{transform:translateY(-3px);border-color:var(--accent)}
+    .note-meta{font-family:var(--mono);font-size:.63rem;color:var(--accent);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.8rem}
+    .note-card h3{font-size:1rem;color:var(--text);margin-bottom:.6rem}.note-card p{font-size:.82rem;line-height:1.6;color:var(--text-dim)}
+
+    /* ACCESSIBILITY */
+    .skip-link{position:fixed;left:1rem;top:-100px;z-index:10000;background:var(--accent);color:var(--bg);padding:.7rem 1rem;font-family:var(--mono);font-size:.75rem;text-decoration:none;border-radius:4px}.skip-link:focus{top:1rem}
+    :focus-visible{outline:3px solid var(--accent);outline-offset:4px}
+    #motion-toggle{display:flex;align-items:center;background:var(--surface);border:1px solid var(--border2);border-radius:100px;padding:.42rem .65rem;color:var(--text-dim);font-family:var(--mono);font-size:.64rem;cursor:pointer}
+    html.reduce-motion{scroll-behavior:auto}html.reduce-motion *,html.reduce-motion *::before,html.reduce-motion *::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
+    html.reduce-motion #scroll-char-wrap,html.reduce-motion #cur-trail{display:none}
 
     /* SKILLS */
     #skills{max-width:1200px;margin:0 auto;padding:6rem 4rem}
@@ -237,12 +276,17 @@
       .btn-p,.btn-g{padding:.75rem 1.25rem;font-size:.8rem}
       .proj-grid{grid-template-columns:1fr}
       .sk-cats{grid-template-columns:1fr}
+      .case-grid,.notes-grid{grid-template-columns:1fr}
+      .project-metrics{grid-template-columns:1fr 1fr}
+      #motion-toggle span{display:none}
     }
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.fade-in{opacity:1;transform:none}.hero-badge::before,.hero-title .cur,.learn-item>div:first-child{animation:none!important}}
     @media(min-width:1200px){.hero-terminal{display:block}.hero-content{max-width:600px}}
     @media(min-width:901px) and (max-width:1199px){nav{padding:1rem 2rem}.nav-links{gap:1.5rem}.nav-links a{font-size:.68rem}}
   </style>
 </head>
 <body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
 
 <!-- CURSORS -->
 <div id="cur-dot"></div>
@@ -289,16 +333,18 @@
     <li><a href="#experience">experience</a></li>
     <li><a href="#projects">projects</a></li>
     <li><a href="#skills">skills</a></li>
+    <li><a href="#notes">notes</a></li>
     <li><a href="#education">education</a></li>
     <li><a href="#contact">contact</a></li>
   </ul>
   <div class="nav-right">
+    <button id="motion-toggle" type="button" aria-pressed="false" aria-label="Reduce motion"><span>REDUCE MOTION</span></button>
     <button id="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
       <span id="t-ico">☀️</span>
       <div class="t-track"><div class="t-knob"></div></div>
       <span class="t-lbl" style="font-size:.68rem;letter-spacing:.05em">LIGHT</span>
     </button>
-    <a href="#contact" class="nav-cta">hire_me()</a>
+    <a href="#contact" class="nav-cta" aria-label="Contact Blair Vullu">contact_me()</a>
     <button class="nav-hbg" id="hbg" aria-label="menu">
       <span></span><span></span><span></span>
     </button>
@@ -306,7 +352,7 @@
 </nav>
 
 <!-- HERO -->
-<section id="home">
+<main id="main-content"><section id="home">
   <div class="hero-grid-bg"></div>
   <div class="hero-orb hero-orb-1"></div>
   <div class="hero-orb hero-orb-2"></div>
@@ -318,6 +364,7 @@
     <div class="hero-actions">
       <a href="#projects" class="btn-p">View Projects →</a>
       <a href="#contact" class="btn-g">Get In Touch</a>
+      <a href="Assets/Blair-Vullu-CV.pdf" class="btn-g" download aria-label="Download Blair Vullu's CV as a PDF">Download CV ↓</a>
     </div>
     <div class="hero-stats">
       <div class="stat"><div class="stat-num">1+</div><div class="stat-label">Years Experience</div></div>
@@ -371,19 +418,11 @@
       </div>
     </div>
     <div class="fade-in" style="transition-delay:.2s">
-      <div class="sec-lbl">// proficiency</div>
-      <div class="sk-list" style="margin-top:1rem">
-        <div><div class="sk-meta"><span class="sk-name">Spring Boot & Spring Cloud</span><span class="sk-pct">92%</span></div><div class="sk-bar"><div class="sk-fill" style="width:92%"></div></div></div>
-        <div><div class="sk-meta"><span class="sk-name">Microservices Architecture</span><span class="sk-pct">88%</span></div><div class="sk-bar"><div class="sk-fill" style="width:88%"></div></div></div>
-        <div><div class="sk-meta"><span class="sk-name">Apache Kafka / Event-Driven</span><span class="sk-pct">85%</span></div><div class="sk-bar"><div class="sk-fill" style="width:85%"></div></div></div>
-        <div><div class="sk-meta"><span class="sk-name">REST API Design</span><span class="sk-pct">90%</span></div><div class="sk-bar"><div class="sk-fill" style="width:90%"></div></div></div>
-        <div><div class="sk-meta"><span class="sk-name">ESB / ISO 8583 & ISO 20022</span><span class="sk-pct">80%</span></div><div class="sk-bar"><div class="sk-fill" style="width:80%"></div></div></div>
-        <div><div class="sk-meta"><span class="sk-name">MySQL & PostgreSQL</span><span class="sk-pct">84%</span></div><div class="sk-bar"><div class="sk-fill" style="width:84%"></div></div></div>
-        <div><div class="sk-meta"><span class="sk-name">Security (JWT, RBAC, BCrypt)</span><span class="sk-pct">84%</span></div><div class="sk-bar"><div class="sk-fill" style="width:84%"></div></div></div>
-        <div><div class="sk-meta"><span class="sk-name">Payment Systems & M-Pesa</span><span class="sk-pct">82%</span></div><div class="sk-bar"><div class="sk-fill" style="width:82%"></div></div></div>
-        <div><div class="sk-meta"><span class="sk-name">React / Frontend</span><span class="sk-pct">72%</span></div><div class="sk-bar"><div class="sk-fill" style="width:72%"></div></div></div>
-        <div><div class="sk-meta"><span class="sk-name">AI / LLM Integration</span><span class="sk-pct">65%</span></div><div class="sk-bar"><div class="sk-fill" style="width:65%"></div></div></div>
-        <div><div class="sk-meta"><span class="sk-name">Telecom Engineering</span><span class="sk-pct">88%</span></div><div class="sk-bar"><div class="sk-fill" style="width:88%"></div></div></div>
+      <div class="sec-lbl">// experience map</div>
+      <div class="capability-stack">
+        <article class="capability-card"><h3>Core</h3><p>Technologies I use as the foundation of my day-to-day engineering work.</p><div class="stk-grid"><span class="stk-tag">Java</span><span class="stk-tag">Spring Boot</span><span class="stk-tag">REST APIs</span><span class="stk-tag">Microservices</span><span class="stk-tag">SQL</span><span class="stk-tag">Git</span></div></article>
+        <article class="capability-card"><h3>Production Experience</h3><p>Capabilities applied to enterprise systems through delivery, go-live readiness, and support.</p><div class="stk-grid"><span class="stk-tag">Spring Cloud</span><span class="stk-tag">Kafka</span><span class="stk-tag">Apache Camel</span><span class="stk-tag">JWT / RBAC</span><span class="stk-tag">CI/CD</span><span class="stk-tag">ESB Integration</span></div></article>
+        <article class="capability-card learning"><h3>Currently Learning</h3><p>Areas I am actively strengthening through study and hands-on prototypes.</p><div class="stk-grid"><span class="stk-tag">Kubernetes</span><span class="stk-tag">Spring AI</span><span class="stk-tag">Kafka Streams</span><span class="stk-tag">AWS</span><span class="stk-tag">CQRS</span></div></article>
       </div>
     </div>
   </div>
@@ -431,16 +470,25 @@
 <!-- PROJECTS -->
 <section id="projects">
   <div class="proj-wrap">
-    <div class="sec-hdr fade-in"><div class="sec-lbl">03 — Projects</div><h2 class="sec-ttl">Things I've<br>shipped.</h2><p class="sec-sub">From production insurance platforms to payment microservices — built with precision and deployed with purpose.</p></div>
+    <div class="sec-hdr fade-in"><div class="sec-lbl">03 — Projects</div><h2 class="sec-ttl">Things I've<br>delivered.</h2><p class="sec-sub">Selected enterprise and personal systems, with delivery context beyond the technology stack.</p></div>
+    <div class="project-filters fade-in" role="group" aria-label="Filter projects">
+      <button class="filter-btn active" type="button" data-filter="all" aria-pressed="true">All</button>
+      <button class="filter-btn" type="button" data-filter="live" aria-pressed="false">Live</button>
+      <button class="filter-btn" type="button" data-filter="prelaunch" aria-pressed="false">Pre-Launch</button>
+      <button class="filter-btn" type="button" data-filter="development" aria-pressed="false">In Development</button>
+      <button class="filter-btn" type="button" data-filter="personal" aria-pressed="false">Personal</button>
+      <button class="filter-btn" type="button" data-filter="enterprise" aria-pressed="false">Enterprise</button>
+    </div>
+    <div id="project-count" class="sec-lbl" aria-live="polite">8 projects shown</div>
     <div class="proj-grid">
-      <div class="proj-card indev fade-in"><div class="proj-status s-dev">⬤ Pre-Launch</div><div class="proj-ttl">Heritage Insurance — Quotation & Policy Platform</div><div class="proj-desc">Enterprise microservices platform for quotation generation, plan comparison, and policy management across travel and marine insurance. Built with secure workflows, document generation, and ESB integration; currently in final go-live preparation.</div><div class="proj-tags"><span class="proj-tag">Java</span><span class="proj-tag">Spring Boot</span><span class="proj-tag">Spring Cloud</span><span class="proj-tag">JWT / RBAC</span><span class="proj-tag">Flyway</span><span class="proj-tag">Caffeine Cache</span><span class="proj-tag">Thymeleaf PDF</span><span class="proj-tag">ESB</span><span class="proj-tag">Microservices</span></div><div class="proj-links"><span class="proj-lnk" style="color:var(--accent3)">◌ Go-Live Readiness</span></div></div>
-      <div class="proj-card feat fade-in"><div class="proj-status s-prod">⬤ Live</div><div class="proj-ttl">RECA Platform</div><div class="proj-desc">Live enterprise platform delivered as part of the R&amp;D engineering team. Contributed to backend services, secure API integrations, data workflows, release readiness, and ongoing production support.</div><div class="proj-tags"><span class="proj-tag">Java</span><span class="proj-tag">Spring Boot</span><span class="proj-tag">REST APIs</span><span class="proj-tag">Spring Security</span><span class="proj-tag">Microservices</span><span class="proj-tag">CI/CD</span></div><div class="proj-links"><span class="proj-lnk" style="color:var(--accent2)">✓ Live in Production</span></div></div>
-      <div class="proj-card indev fade-in"><div class="proj-status s-dev">⬤ In Development</div><div class="proj-ttl">Enterprise Service Bus (ESB)</div><div class="proj-desc">Integration layer connecting internal platforms and external financial services through reliable, traceable message flows. Implements routing, transformation, validation, error handling, and asynchronous service orchestration.</div><div class="proj-tags"><span class="proj-tag">Java</span><span class="proj-tag">Spring Boot</span><span class="proj-tag">Apache Camel</span><span class="proj-tag">Apache Kafka</span><span class="proj-tag">ISO 8583</span><span class="proj-tag">ISO 20022</span><span class="proj-tag">REST APIs</span><span class="proj-tag">Message Routing</span></div><div class="proj-links"><span class="proj-lnk" style="color:var(--accent3)">⟳ Active Development</span></div></div>
-      <div class="proj-card indev fade-in"><div class="proj-status s-dev">⬤ In Development</div><div class="proj-ttl">Co-Banking Microservices Platform</div><div class="proj-desc">Distributed co-banking platform supporting multi-tenant banking operations, transactional integrity (ACID), KYC workflows, and ESB integration. Built in phased architecture from infra through to integration layer.</div><div class="proj-tags"><span class="proj-tag">Java</span><span class="proj-tag">Spring Boot</span><span class="proj-tag">Apache Kafka</span><span class="proj-tag">Apache Camel</span><span class="proj-tag">Eureka</span><span class="proj-tag">API Gateway</span><span class="proj-tag">JWT</span><span class="proj-tag">Multi-Tenancy</span><span class="proj-tag">ACID</span></div><div class="proj-links"><span class="proj-lnk" style="color:var(--accent3)">⟳ Active Development</span></div></div>
-      <div class="proj-card indev fade-in"><div class="proj-status s-dev">⬤ In Development</div><div class="proj-ttl">HRSync — Human Resource Management System</div><div class="proj-desc">Full-stack, role-based HR platform designed to streamline workforce operations end-to-end. Covers employee onboarding, leave & attendance management, payroll processing, performance reviews, and department analytics. Built as a microservices backend with a React dashboard, giving HR teams and managers real-time visibility into workforce data with audit trails and compliance reporting baked in.</div><div class="proj-tags"><span class="proj-tag">Java</span><span class="proj-tag">Spring Boot</span><span class="proj-tag">Spring Security</span><span class="proj-tag">MySQL</span><span class="proj-tag">React</span><span class="proj-tag">JWT / RBAC</span><span class="proj-tag">Microservices</span><span class="proj-tag">REST API</span><span class="proj-tag">Payroll Engine</span></div><div class="proj-links"><span class="proj-lnk" style="color:var(--accent3)">⟳ Active Development</span></div></div>
-      <div class="proj-card fade-in"><div class="proj-status s-done">● Complete</div><div class="proj-ttl">Money Wallet — Payment Microservices</div><div class="proj-desc">Full microservices payment system: authentication, KYC, wallet, and transaction services. P2P transfers, deposits, withdrawals, Kafka notifications, Redis caching, and CI/CD pipelines.</div><div class="proj-tags"><span class="proj-tag">Spring Boot</span><span class="proj-tag">Kafka</span><span class="proj-tag">Redis</span><span class="proj-tag">Eureka</span><span class="proj-tag">Spring Cloud Gateway</span><span class="proj-tag">MySQL</span><span class="proj-tag">CI/CD</span></div></div>
-      <div class="proj-card fade-in"><div class="proj-status s-done">● Complete</div><div class="proj-ttl">GeoBuddy — GPS Tracker System</div><div class="proj-desc">Real-time tracking backend for pets, children, and luggage using GF21 GPS devices. JWT auth, OTP login, WebSocket live location, IMEI validation, and MySQL persistence.</div><div class="proj-tags"><span class="proj-tag">Spring Boot</span><span class="proj-tag">WebSocket</span><span class="proj-tag">JWT</span><span class="proj-tag">OTP</span><span class="proj-tag">MySQL</span><span class="proj-tag">GF21 Devices</span><span class="proj-tag">REST API</span></div></div>
-      <div class="proj-card feat fade-in"><div class="proj-status s-prod">⬤ Production</div><div class="proj-ttl">Nalazuri — Travel & Tourism Platform</div><div class="proj-desc">Live travel platform enabling users to discover curated Kenyan travel packages and generate professional PDF invoices on the fly. Integrated Twilio WhatsApp delivery for instant invoice sharing — no backend required. Built with a vivid, conversion-focused UI using React and Framer Motion.</div><div class="proj-tags"><span class="proj-tag">React</span><span class="proj-tag">Twilio</span><span class="proj-tag">WhatsApp API</span><span class="proj-tag">Framer Motion</span><span class="proj-tag">PDF Generation</span><span class="proj-tag">Elementor</span></div><div class="proj-links"><a href="https://nalazuritravels.com/" target="_blank" class="proj-lnk" style="color:var(--accent)">↗ nalazuritravels.com</a><span class="proj-lnk" style="color:var(--accent2)">✓ Live in Production</span></div></div>
+      <article class="proj-card indev fade-in" data-categories="prelaunch enterprise"><div class="proj-status s-dev">⬤ Pre-Launch</div><h3 class="proj-ttl">Heritage Insurance — Quotation & Policy Platform</h3><p class="proj-desc">Enterprise microservices platform for travel and marine quotation, plan comparison, and policy workflows.</p><div class="project-metrics"><div class="metric"><strong>2</strong><span>insurance lines</span></div><div class="metric"><strong>Pre-Launch</strong><span>delivery stage</span></div><div class="metric"><strong>PDF + ESB</strong><span>integrations</span></div></div><div class="proj-tags"><span class="proj-tag">Java</span><span class="proj-tag">Spring Boot</span><span class="proj-tag">Spring Cloud</span><span class="proj-tag">JWT / RBAC</span><span class="proj-tag">Flyway</span></div><details class="case-study"><summary>View case study</summary><div class="case-grid"><div class="case-block"><h4>Problem</h4><p>Insurance teams need consistent quotation, comparison, documentation, and policy workflows across product lines.</p></div><div class="case-block"><h4>My contribution</h4><p>Backend microservices, secure workflows, data migrations, PDF generation, caching, and integration readiness.</p></div><div class="case-block"><h4>Architecture</h4><p>Spring Cloud services behind secure APIs, connected to document and enterprise integration layers.</p></div><div class="case-block"><h4>Outcome</h4><p>A go-live-ready platform currently in final release preparation.</p></div></div></details></article>
+      <article class="proj-card feat fade-in" data-categories="live enterprise"><div class="proj-status s-prod">⬤ Live</div><h3 class="proj-ttl">RECA Platform</h3><p class="proj-desc">Live enterprise platform delivered with the R&amp;D engineering team and supported in production.</p><div class="project-metrics"><div class="metric"><strong>Live</strong><span>production status</span></div><div class="metric"><strong>API</strong><span>secure integration</span></div><div class="metric"><strong>CI/CD</strong><span>delivery workflow</span></div></div><div class="proj-tags"><span class="proj-tag">Java</span><span class="proj-tag">Spring Boot</span><span class="proj-tag">REST APIs</span><span class="proj-tag">Spring Security</span></div><details class="case-study"><summary>View case study</summary><div class="case-grid"><div class="case-block"><h4>Problem</h4><p>Deliver a reliable enterprise workflow that can move safely from engineering into live operations.</p></div><div class="case-block"><h4>My contribution</h4><p>Backend services, secure API integrations, data workflows, release readiness, and production support.</p></div><div class="case-block"><h4>Architecture</h4><p>Security-focused Spring Boot services with API and persistence boundaries.</p></div><div class="case-block"><h4>Outcome</h4><p>Successfully released and currently live in production.</p></div></div></details></article>
+      <article class="proj-card indev fade-in" data-categories="development enterprise"><div class="proj-status s-dev">⬤ In Development</div><h3 class="proj-ttl">Enterprise Service Bus (ESB)</h3><p class="proj-desc">An integration layer for reliable, traceable communication between internal platforms and external financial services.</p><div class="project-metrics"><div class="metric"><strong>2</strong><span>message standards</span></div><div class="metric"><strong>4</strong><span>integration controls</span></div><div class="metric"><strong>Async</strong><span>event flows</span></div></div><div class="proj-tags"><span class="proj-tag">Apache Camel</span><span class="proj-tag">Kafka</span><span class="proj-tag">ISO 8583</span><span class="proj-tag">ISO 20022</span></div><details class="case-study"><summary>View case study + architecture</summary><div class="case-grid"><div class="case-block"><h4>Problem</h4><p>Different systems and financial message formats need one dependable integration boundary.</p></div><div class="case-block"><h4>My contribution</h4><p>Message routing, transformation, validation, error handling, and asynchronous orchestration.</p></div><div class="case-block"><h4>Architecture</h4><p>Adapters normalize requests before Camel routes and Kafka workflows connect downstream services.</p></div><div class="case-block"><h4>Outcome</h4><p>A reusable integration foundation that reduces point-to-point coupling.</p></div></div><div class="arch" role="img" aria-label="ESB architecture: channels connect through adapters to routing and transformation, then events and core services"><span class="arch-node">Channels</span><span class="arch-arrow">→</span><span class="arch-node">Adapters</span><span class="arch-arrow">→</span><span class="arch-node">Route + Transform</span><span class="arch-arrow">→</span><span class="arch-node">Kafka</span><span class="arch-arrow">→</span><span class="arch-node">Core Services</span></div></details></article>
+      <article class="proj-card indev fade-in" data-categories="development enterprise"><div class="proj-status s-dev">⬤ In Development</div><h3 class="proj-ttl">Co-Banking Microservices Platform</h3><p class="proj-desc">Multi-tenant banking platform designed around secure customer, KYC, account, and transaction workflows.</p><div class="project-metrics"><div class="metric"><strong>Multi-Tenant</strong><span>data model</span></div><div class="metric"><strong>ACID</strong><span>transactions</span></div><div class="metric"><strong>Event-Driven</strong><span>communication</span></div></div><div class="proj-tags"><span class="proj-tag">Spring Boot</span><span class="proj-tag">Kafka</span><span class="proj-tag">Eureka</span><span class="proj-tag">API Gateway</span><span class="proj-tag">JWT</span></div><details class="case-study"><summary>View case study + architecture</summary><div class="case-grid"><div class="case-block"><h4>Problem</h4><p>Support multiple banking tenants without compromising isolation, security, or transactional integrity.</p></div><div class="case-block"><h4>My contribution</h4><p>Phased service architecture, gateway security, discovery, tenant-aware data, events, and ESB integration.</p></div><div class="case-block"><h4>Architecture</h4><p>A secured gateway routes to independently deployable services backed by tenant-aware stores and events.</p></div><div class="case-block"><h4>Outcome</h4><p>An extensible foundation for onboarding banking capabilities incrementally.</p></div></div><div class="arch" role="img" aria-label="Co-Banking architecture: clients connect through gateway to authentication, customer, KYC, account and transaction services, with events and data stores"><span class="arch-node">Clients</span><span class="arch-arrow">→</span><span class="arch-node">API Gateway</span><span class="arch-arrow">→</span><span class="arch-node">Auth + KYC</span><span class="arch-arrow">→</span><span class="arch-node">Accounts + Transactions</span><span class="arch-arrow">↔</span><span class="arch-node">Kafka + Data</span></div></details></article>
+      <article class="proj-card indev fade-in" data-categories="development personal"><div class="proj-status s-dev">⬤ In Development</div><h3 class="proj-ttl">HRSync — Human Resource Management System</h3><p class="proj-desc">Role-based HR platform covering onboarding, leave, attendance, payroll, performance, and department analytics.</p><div class="project-metrics"><div class="metric"><strong>6</strong><span>HR capabilities</span></div><div class="metric"><strong>RBAC</strong><span>access model</span></div><div class="metric"><strong>Full Stack</strong><span>delivery scope</span></div></div><div class="proj-tags"><span class="proj-tag">Spring Boot</span><span class="proj-tag">React</span><span class="proj-tag">MySQL</span><span class="proj-tag">JWT / RBAC</span></div></article>
+      <article class="proj-card fade-in" data-categories="personal"><div class="proj-status s-done">● Complete</div><h3 class="proj-ttl">Money Wallet — Payment Microservices</h3><p class="proj-desc">Payment system with authentication, KYC, wallet and transaction services supporting P2P transfers, deposits, and withdrawals.</p><div class="project-metrics"><div class="metric"><strong>4</strong><span>core services</span></div><div class="metric"><strong>3</strong><span>money flows</span></div><div class="metric"><strong>CI/CD</strong><span>automation</span></div></div><div class="proj-tags"><span class="proj-tag">Spring Boot</span><span class="proj-tag">Kafka</span><span class="proj-tag">Redis</span><span class="proj-tag">MySQL</span></div></article>
+      <article class="proj-card fade-in" data-categories="personal"><div class="proj-status s-done">● Complete</div><h3 class="proj-ttl">GeoBuddy — GPS Tracker System</h3><p class="proj-desc">Real-time tracking backend for GF21 devices with secure access and live location updates.</p><div class="project-metrics"><div class="metric"><strong>Real-Time</strong><span>WebSocket updates</span></div><div class="metric"><strong>OTP + JWT</strong><span>access controls</span></div><div class="metric"><strong>IMEI</strong><span>device validation</span></div></div><div class="proj-tags"><span class="proj-tag">Spring Boot</span><span class="proj-tag">WebSocket</span><span class="proj-tag">JWT</span><span class="proj-tag">MySQL</span></div></article>
+      <article class="proj-card feat fade-in" data-categories="live personal"><div class="proj-status s-prod">⬤ Live</div><h3 class="proj-ttl">Nalazuri — Travel & Tourism Platform</h3><p class="proj-desc">Live travel platform with curated packages, client-side PDF invoices, and WhatsApp delivery.</p><div class="project-metrics"><div class="metric"><strong>Live</strong><span>production status</span></div><div class="metric"><strong>PDF</strong><span>invoice flow</span></div><div class="metric"><strong>WhatsApp</strong><span>delivery channel</span></div></div><div class="proj-tags"><span class="proj-tag">React</span><span class="proj-tag">Twilio</span><span class="proj-tag">Framer Motion</span></div><div class="proj-links"><a href="https://nalazuritravels.com/" target="_blank" rel="noopener" class="proj-lnk" style="color:var(--accent)" aria-label="Visit Nalazuri Travels website">↗ Visit live site</a></div></article>
     </div>
   </div>
 </section>
@@ -504,6 +552,19 @@
 </section>
 <style>@media(max-width:900px){.lg-grid{grid-template-columns:1fr!important;gap:3rem!important}}</style>
 
+<!-- ENGINEERING NOTES -->
+<section id="notes">
+  <div class="notes-wrap">
+    <div class="sec-hdr fade-in"><div class="sec-lbl">// engineering notes</div><h2 class="sec-ttl">How I think<br>about systems.</h2><p class="sec-sub">Short, practical notes drawn from the architecture and delivery problems I work on.</p></div>
+    <div class="notes-grid">
+      <article class="note-card fade-in" id="note-esb"><div class="note-meta">Integration Architecture · 5 min</div><h3>Designing an ESB without creating a bottleneck</h3><p>Keep transport adapters, canonical models, routing, transformation, and failure recovery separate so integration logic remains observable and replaceable.</p></article>
+      <article class="note-card fade-in" id="note-tenancy"><div class="note-meta">Data Architecture · 4 min</div><h3>Tenant isolation in co-banking systems</h3><p>Tenant context must travel through authentication, service boundaries, queries, events, logs, and audit trails—not stop at the API gateway.</p></article>
+      <article class="note-card fade-in" id="note-golive"><div class="note-meta">Delivery · 3 min</div><h3>What “go-live ready” means for a backend service</h3><p>A release is more than passing tests: migrations, rollback, secrets, monitoring, failure handling, operational ownership, and support documentation all matter.</p></article>
+    </div>
+    <div class="hero-actions fade-in" style="margin:2rem 0 0"><a href="https://www.linkedin.com/in/blair-vullu-59a829217/" target="_blank" rel="noopener" class="btn-g" aria-label="Follow Blair Vullu on LinkedIn">Follow on LinkedIn ↗</a><a href="https://github.com/BlairMutisya" target="_blank" rel="noopener" class="btn-g" aria-label="View Blair Vullu's GitHub profile">Explore GitHub ↗</a></div>
+  </div>
+</section>
+
 <!-- EDUCATION -->
 <section id="education" style="max-width:1200px;margin:0 auto;padding:6rem 4rem">
   <div class="sec-hdr fade-in"><div class="sec-lbl">06 — Education</div><h2 class="sec-ttl">Where I<br>learned to think.</h2></div>
@@ -539,30 +600,33 @@
     <p class="sec-sub fade-in" style="margin:1rem auto 3rem">Open to new opportunities, collaborations, and backend engineering challenges. Drop a message — I'll respond promptly.</p>
     <div class="c-grid fade-in">
       <a href="mailto:tonnyblair09@gmail.com" class="c-card"><div class="c-ico">✉</div><div><div class="c-lbl">Email</div><div class="c-val">tonnyblair09@gmail.com</div></div></a>
-      <a href="https://www.linkedin.com/in/blair-vullu-59a829217/" target="_blank" class="c-card"><div class="c-ico" style="font-family:var(--mono);font-weight:700">in</div><div><div class="c-lbl">LinkedIn</div><div class="c-val">Blair Vullu</div></div></a>
-      <a href="https://github.com/BlairMutisya" target="_blank" class="c-card"><div class="c-ico">⌥</div><div><div class="c-lbl">GitHub</div><div class="c-val">@BlairMutisya</div></div></a>
+      <a href="https://www.linkedin.com/in/blair-vullu-59a829217/" target="_blank" rel="noopener" class="c-card" aria-label="Open Blair Vullu's LinkedIn profile"><div class="c-ico" style="font-family:var(--mono);font-weight:700">in</div><div><div class="c-lbl">LinkedIn</div><div class="c-val">Blair Vullu</div></div></a>
+      <a href="https://github.com/BlairMutisya" target="_blank" rel="noopener" class="c-card" aria-label="Open Blair Vullu's GitHub profile"><div class="c-ico">⌥</div><div><div class="c-lbl">GitHub</div><div class="c-val">@BlairMutisya</div></div></a>
+      <a href="Assets/Blair-Vullu-CV.pdf" download class="c-card" aria-label="Download Blair Vullu's CV as a PDF"><div class="c-ico">↓</div><div><div class="c-lbl">Resume</div><div class="c-val">Download CV</div></div></a>
     </div>
     <div class="c-form fade-in" style="margin-top:2.5rem">
       <div id="form-ok" style="display:none;font-family:var(--mono);font-size:.85rem;color:var(--accent2);padding:1rem;background:rgba(0,255,136,.08);border:1px solid rgba(0,255,136,.2);border-radius:6px;margin-bottom:1rem">✓ Message sent! I'll get back to you shortly.</div>
       <div id="form-err" style="display:none;font-family:var(--mono);font-size:.85rem;color:var(--accent3);padding:1rem;background:rgba(255,107,53,.08);border:1px solid rgba(255,107,53,.2);border-radius:6px;margin-bottom:1rem">✗ Something went wrong. Email me at tonnyblair09@gmail.com</div>
       <div class="f-row">
-        <div class="f-grp"><label>Name</label><input type="text" id="c-name" placeholder="Your name" required></div>
-        <div class="f-grp"><label>Email</label><input type="email" id="c-email" placeholder="your@email.com" required></div>
+        <div class="f-grp"><label for="c-name">Name</label><input type="text" id="c-name" autocomplete="name" placeholder="Your name" required></div>
+        <div class="f-grp"><label for="c-email">Email</label><input type="email" id="c-email" autocomplete="email" placeholder="your@email.com" required></div>
       </div>
-      <div class="f-grp"><label>Subject</label><input type="text" id="c-subject" placeholder="What's this about?"></div>
-      <div class="f-grp"><label>Message</label><textarea id="c-msg" placeholder="Tell me about your project or opportunity..."></textarea></div>
+      <div class="f-grp"><label for="c-subject">Subject</label><input type="text" id="c-subject" placeholder="What's this about?"></div>
+      <div class="f-grp"><label for="c-msg">Message</label><textarea id="c-msg" placeholder="Tell me about your project or opportunity..." required></textarea></div>
       <button class="btn-p" id="send-btn" onclick="sendEmail()" style="width:fit-content">Send Message →</button>
     </div>
   </div>
 </section>
+</main>
 
 <!-- FOOTER -->
 <footer>
   <div class="f-logo">blair.vullu</div>
-  <div class="f-copy">© 2025 Blair Vullu · Nairobi, Kenya</div>
+  <div class="f-copy">© 2026 Blair Vullu · Nairobi, Kenya</div>
   <div class="f-links">
     <a href="#home">top</a><a href="#projects">projects</a>
-    <a href="https://github.com/BlairMutisya" target="_blank">github</a>
+    <a href="https://github.com/BlairMutisya" target="_blank" rel="noopener">github</a>
+    <a href="https://www.linkedin.com/in/blair-vullu-59a829217/" target="_blank" rel="noopener">linkedin</a>
     <a href="#contact">contact</a>
   </div>
 </footer>
@@ -669,6 +733,7 @@ let ti=0,ci=0,del=false;
 const tel = document.getElementById('typed-text');
 function typeLoop() {
   if(!tel) return;
+  if(document.documentElement.classList.contains('reduce-motion') || window.matchMedia('(prefers-reduced-motion: reduce)').matches){tel.textContent=titles[0];return;}
   const w = titles[ti];
   if(!del){ tel.textContent=w.slice(0,ci+1); ci++; if(ci===w.length){setTimeout(()=>{del=true;typeLoop()},2200);return;} }
   else{ tel.textContent=w.slice(0,ci-1); ci--; if(ci===0){del=false;ti=(ti+1)%titles.length;} }
@@ -679,12 +744,32 @@ typeLoop();
 /* ── HAMBURGER ── */
 const hbg = document.getElementById('hbg');
 const nl = document.getElementById('nav-links');
-hbg.addEventListener('click', () => nl.classList.toggle('open'));
+hbg.setAttribute('aria-expanded','false');
+hbg.addEventListener('click', () => {const open=nl.classList.toggle('open');hbg.setAttribute('aria-expanded',String(open));});
 nl.addEventListener('click', () => nl.classList.remove('open'));
 
+/* ── PROJECT FILTERS ── */
+const filterButtons = document.querySelectorAll('.filter-btn');
+const projectCards = document.querySelectorAll('.proj-card[data-categories]');
+const projectCount = document.getElementById('project-count');
+filterButtons.forEach(button => button.addEventListener('click', () => {
+  const filter = button.dataset.filter;
+  filterButtons.forEach(item => {item.classList.toggle('active',item===button);item.setAttribute('aria-pressed',String(item===button));});
+  let visible=0;
+  projectCards.forEach(card => {const show=filter==='all'||card.dataset.categories.split(' ').includes(filter);card.classList.toggle('is-hidden',!show);if(show)visible++;});
+  if(projectCount) projectCount.textContent=`${visible} project${visible===1?'':'s'} shown`;
+}));
+
+/* ── MOTION PREFERENCE ── */
+const motionToggle = document.getElementById('motion-toggle');
+function setMotionPreference(reduce){document.documentElement.classList.toggle('reduce-motion',reduce);motionToggle.setAttribute('aria-pressed',String(reduce));motionToggle.setAttribute('aria-label',reduce?'Enable motion':'Reduce motion');const label=motionToggle.querySelector('span');if(label)label.textContent=reduce?'ENABLE MOTION':'REDUCE MOTION';localStorage.setItem('pf-reduce-motion',String(reduce));}
+setMotionPreference(localStorage.getItem('pf-reduce-motion')==='true'||window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+motionToggle.addEventListener('click',()=>setMotionPreference(!document.documentElement.classList.contains('reduce-motion')));
+
 /* ── SCROLL REVEAL ── */
-const obs = new IntersectionObserver(entries => entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); }), {threshold:.1});
-document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+const revealItems=document.querySelectorAll('.fade-in');
+if(document.documentElement.classList.contains('reduce-motion')){revealItems.forEach(el=>el.classList.add('visible'));}
+else{const obs = new IntersectionObserver(entries => entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); }), {threshold:.1});revealItems.forEach(el => obs.observe(el));}
 </script>
 
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
