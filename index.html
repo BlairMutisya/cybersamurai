@@ -4,6 +4,18 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Blair Vullu | Backend Engineer</title>
+  <meta name="description" content="Blair Vullu is a Nairobi-based Software Developer building Java, Spring Boot, microservices, ESB integrations, and distributed financial systems." />
+  <meta name="author" content="Blair Vullu" />
+  <meta name="theme-color" content="#050A0E" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Blair Vullu | Software Developer" />
+  <meta property="og:description" content="Backend engineering, distributed systems, ESB integrations, and financial messaging." />
+  <meta property="og:image" content="Assets/blair-vullu-og.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Blair Vullu — Software Developer specialising in Java, Spring Boot, and distributed systems" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" href="Assets/favicon.svg" type="image/svg+xml" />
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -105,6 +117,30 @@
     .t-ttl{font-family:var(--mono);font-size:.7rem;color:var(--text-dim);margin-inline:auto}
     .t-body{padding:1.5rem;font-family:var(--mono);font-size:.8rem;line-height:2}
     .t-ln{display:flex;gap:.5rem}.t-pr{color:var(--accent2)}.t-k{color:var(--accent)}.t-v{color:var(--accent2)}.t-c{color:var(--text-muted)}
+    .terminal-output{height:245px;overflow:auto;scrollbar-width:thin}.terminal-output .term-row{display:block;line-height:1.65;overflow-wrap:anywhere}.term-command{color:var(--text)}.term-result{color:var(--text-dim)}.term-success{color:var(--accent2)}.term-error{color:var(--accent3)}
+    .terminal-form{display:flex;align-items:center;gap:.55rem;border-top:1px solid var(--border);padding-top:.65rem;margin-top:.45rem}.terminal-form label{color:var(--accent2)}.terminal-form input{width:100%;border:0;outline:0;background:transparent;color:var(--text);font:inherit;caret-color:var(--accent);cursor:text}.terminal-hint{font-size:.61rem;color:var(--text-muted);line-height:1.4;margin-top:.45rem}
+
+    /* STATUS STRIP */
+    .system-strip{position:fixed;top:65px;left:0;right:0;z-index:95;display:flex;justify-content:center;gap:2rem;padding:.38rem 1rem;background:rgba(5,10,14,.94);border-bottom:1px solid var(--border);backdrop-filter:blur(12px);font-family:var(--mono);font-size:.62rem;color:var(--text-dim);letter-spacing:.07em;white-space:nowrap;overflow:hidden}
+    [data-theme="light"] .system-strip{background:rgba(240,247,255,.95)}.system-strip strong{color:var(--text);font-weight:500}.status-online{color:var(--accent2)!important}.status-online::before{content:'';display:inline-block;width:6px;height:6px;margin-right:.45rem;border-radius:50%;background:var(--accent2);box-shadow:0 0 8px var(--accent2);animation:pulse 2.4s ease infinite}
+
+    /* COMMAND PALETTE */
+    .palette-backdrop{position:fixed;inset:0;z-index:5000;display:none;align-items:flex-start;justify-content:center;padding:14vh 1rem;background:rgba(2,7,10,.75);backdrop-filter:blur(8px)}.palette-backdrop.open{display:flex}
+    .palette{width:min(620px,100%);background:var(--surface);border:1px solid var(--border2);border-radius:10px;box-shadow:0 30px 100px rgba(0,0,0,.65),var(--glow);overflow:hidden}.palette-search{display:flex;align-items:center;gap:.75rem;padding:1rem 1.15rem;border-bottom:1px solid var(--border)}.palette-search span{color:var(--accent);font-family:var(--mono)}.palette-search input{width:100%;background:none;border:0;outline:0;color:var(--text);font:500 .95rem var(--mono)}.palette-list{max-height:360px;overflow:auto;padding:.5rem}.palette-item{width:100%;display:flex;align-items:center;justify-content:space-between;padding:.8rem .9rem;border:0;border-radius:5px;background:transparent;color:var(--text-dim);cursor:pointer;text-align:left}.palette-item:hover,.palette-item.selected{background:rgba(0,212,255,.09);color:var(--text)}.palette-item strong{font:500 .8rem var(--mono)}.palette-item small{font:.65rem var(--mono);color:var(--text-muted)}.palette-foot{display:flex;gap:1rem;padding:.65rem 1rem;border-top:1px solid var(--border);font:.62rem var(--mono);color:var(--text-muted)}.kbd{padding:.12rem .38rem;border:1px solid var(--border2);border-radius:3px;background:var(--surface2);color:var(--text-dim)}
+
+    /* BOOT SEQUENCE */
+    .boot-screen{position:fixed;inset:0;z-index:12000;background:#020608;color:#8ef5c1;font:clamp(.72rem,1.4vw,.9rem)/1.8 var(--mono);padding:8vh 8vw;transition:opacity .35s,visibility .35s}.boot-screen.done{opacity:0;visibility:hidden;pointer-events:none}.boot-log{max-width:760px}.boot-line{opacity:0;animation:bootIn .12s forwards}.boot-ok{color:var(--accent2)}.boot-skip{position:absolute;right:2rem;top:2rem;background:transparent;border:1px solid rgba(0,255,136,.35);color:#8ef5c1;padding:.45rem .7rem;font:inherit;cursor:pointer}@keyframes bootIn{to{opacity:1}}
+
+    /* INTERACTIVE ARCHITECTURE */
+    .arch-system{margin-top:1rem;padding:1rem;border:1px solid var(--border);border-radius:8px;background:rgba(0,0,0,.17)}.arch-flow{display:grid;grid-template-columns:repeat(9,minmax(24px,auto));align-items:center;justify-content:center;gap:.35rem;overflow-x:auto;padding:.55rem 0 1rem}.arch-system .arch-node{position:relative;cursor:help;min-width:76px;padding:.6rem .55rem;transition:transform .2s,border-color .2s,box-shadow .2s}.arch-system .arch-node:hover,.arch-system .arch-node:focus-visible{transform:translateY(-3px);border-color:var(--accent);box-shadow:0 0 20px rgba(0,212,255,.18)}.arch-node[data-tip]::after{content:attr(data-tip);position:absolute;left:50%;bottom:calc(100% + 9px);z-index:5;width:190px;transform:translate(-50%,5px);padding:.55rem .65rem;border:1px solid var(--border2);border-radius:4px;background:#02080d;color:#c7e6f1;font:.62rem/1.45 var(--mono);opacity:0;visibility:hidden;transition:.18s;pointer-events:none}.arch-node[data-tip]:hover::after,.arch-node[data-tip]:focus-visible::after{opacity:1;visibility:visible;transform:translate(-50%,0)}
+    .flow-line{position:relative;width:30px;height:2px;background:var(--accent);opacity:.75}.flow-line.async{background:repeating-linear-gradient(90deg,var(--accent2) 0 5px,transparent 5px 9px)}.flow-line.failure{background:repeating-linear-gradient(90deg,var(--accent3) 0 4px,transparent 4px 8px)}.flow-line::after{content:'';position:absolute;top:-3px;width:8px;height:8px;border-radius:50%;background:currentColor;color:var(--accent);box-shadow:0 0 8px currentColor;animation:packet 1.8s linear infinite}.flow-line.async::after{color:var(--accent2);animation-duration:2.3s}.flow-line.failure::after{color:var(--accent3);animation-duration:2.8s}@keyframes packet{from{left:-3px}to{left:calc(100% - 3px)}}.retry-row{display:flex;align-items:center;justify-content:center;gap:.4rem;margin-top:.2rem}.arch-legend{display:flex;gap:1rem;flex-wrap:wrap;border-top:1px solid var(--border);padding-top:.8rem;font:.6rem var(--mono);color:var(--text-muted)}.legend-line{display:inline-block;width:22px;height:2px;margin-right:.35rem;vertical-align:middle;background:var(--accent)}.legend-line.async{background:repeating-linear-gradient(90deg,var(--accent2) 0 4px,transparent 4px 7px)}.legend-line.failure{background:repeating-linear-gradient(90deg,var(--accent3) 0 4px,transparent 4px 7px)}
+
+    /* ARTICLES + CODE */
+    .article-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}.article-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:2rem}.article-card h3{font-size:1.25rem;margin-bottom:.65rem}.article-card p{color:var(--text-dim);line-height:1.7;font-size:.9rem}.article-link{display:inline-flex;margin-top:1.25rem;font:.72rem var(--mono);color:var(--accent);text-decoration:none}.code-window{margin-top:1.3rem;border:1px solid var(--border);border-radius:7px;overflow:hidden;background:#02080d}.code-head{display:flex;justify-content:space-between;align-items:center;padding:.55rem .75rem;border-bottom:1px solid var(--border);font:.62rem var(--mono);color:var(--text-muted)}.copy-code{background:transparent;border:0;color:var(--accent);font:inherit;cursor:pointer}.code-block{margin:0;padding:1rem 0;overflow:auto;counter-reset:line;font:clamp(.61rem,1vw,.72rem)/1.65 var(--mono);color:#c7e6f1}.code-line{display:block;padding:0 1rem 0 3.2rem;position:relative;white-space:pre}.code-line::before{counter-increment:line;content:counter(line);position:absolute;left:.8rem;width:1.4rem;text-align:right;color:#35586a;user-select:none}.tok-k{color:#ff7b72}.tok-s{color:#a5d6ff}.tok-f{color:#d2a8ff}.tok-c{color:#6b8fa3}
+
+    /* POLISH */
+    .hero-name{position:relative}.hero-name.glitch{animation:glitchNudge .28s steps(2,end) 2;text-shadow:2px 0 var(--accent3),-2px 0 var(--accent)}@keyframes glitchNudge{0%{transform:translate(0)}25%{transform:translate(2px,-1px)}50%{transform:translate(-2px,1px)}100%{transform:translate(0)}}
+    .commit-meta{display:block;margin-top:.35rem;font:.62rem var(--mono);color:var(--accent2)}.konami-panel{position:fixed;right:1rem;bottom:1rem;z-index:4000;max-width:320px;padding:1rem;background:var(--surface);border:1px solid var(--accent2);border-radius:7px;box-shadow:var(--glow);font:.7rem/1.6 var(--mono);color:var(--text-dim);transform:translateY(140%);transition:transform .35s}.konami-panel.show{transform:none}.konami-panel strong{color:var(--accent2)}
 
     /* SECTIONS */
     section{padding:6rem 4rem;transition:var(--tt)}
@@ -202,6 +238,7 @@
 
     /* ACCESSIBILITY */
     .skip-link{position:fixed;left:1rem;top:-100px;z-index:10000;background:var(--accent);color:var(--bg);padding:.7rem 1rem;font-family:var(--mono);font-size:.75rem;text-decoration:none;border-radius:4px}.skip-link:focus{top:1rem}
+    .sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
     :focus-visible{outline:3px solid var(--accent);outline-offset:4px}
     #motion-toggle{display:flex;align-items:center;background:var(--surface);border:1px solid var(--border2);border-radius:100px;padding:.42rem .65rem;color:var(--text-dim);font-family:var(--mono);font-size:.64rem;cursor:pointer}
     html.reduce-motion{scroll-behavior:auto}html.reduce-motion *,html.reduce-motion *::before,html.reduce-motion *::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
@@ -254,7 +291,7 @@
     /* MOBILE */
     @media(max-width:900px){
       nav{padding:.85rem 1.25rem}
-      .nav-links{display:none}.nav-cta{display:none}.nav-hbg{display:flex}
+      .nav-links{display:none}.nav-cta{display:none}#command-trigger{display:inline-flex}.nav-hbg{display:flex}
       #theme-toggle .t-lbl{display:none}
       .nav-links.open{display:flex;flex-direction:column;position:fixed;top:56px;left:0;right:0;background:var(--nav-bg);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:1.5rem 2rem;gap:1.25rem;align-items:center;z-index:99}
       #home{padding:6rem 1.25rem 8rem}
@@ -277,16 +314,30 @@
       .proj-grid{grid-template-columns:1fr}
       .sk-cats{grid-template-columns:1fr}
       .case-grid,.notes-grid{grid-template-columns:1fr}
+      .article-grid{grid-template-columns:1fr}.system-strip{justify-content:flex-start;overflow-x:auto}.arch-flow{justify-content:start}
       .project-metrics{grid-template-columns:1fr 1fr}
       #motion-toggle span{display:none}
     }
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.fade-in{opacity:1;transform:none}.hero-badge::before,.hero-title .cur,.learn-item>div:first-child{animation:none!important}}
+    html.reduce-motion .flow-line::after,html.reduce-motion .boot-line,html.reduce-motion .status-online::before{animation:none!important}
     @media(min-width:1200px){.hero-terminal{display:block}.hero-content{max-width:600px}}
     @media(min-width:901px) and (max-width:1199px){nav{padding:1rem 2rem}.nav-links{gap:1.5rem}.nav-links a{font-size:.68rem}}
   </style>
 </head>
 <body>
 <a class="skip-link" href="#main-content">Skip to main content</a>
+<div class="boot-screen" id="boot-screen" role="status" aria-label="Loading portfolio">
+  <button class="boot-skip" id="boot-skip" type="button">SKIP [ESC]</button>
+  <div class="boot-log" id="boot-log"></div>
+</div>
+<div class="palette-backdrop" id="command-palette" role="dialog" aria-modal="true" aria-labelledby="palette-title">
+  <div class="palette">
+    <div class="palette-search"><span>›</span><label id="palette-title" class="sr-only" for="palette-input">Search commands</label><input id="palette-input" type="text" autocomplete="off" placeholder="Type a command or section…" /></div>
+    <div class="palette-list" id="palette-list"></div>
+    <div class="palette-foot"><span><span class="kbd">↑↓</span> navigate</span><span><span class="kbd">Enter</span> run</span><span><span class="kbd">Esc</span> close</span></div>
+  </div>
+</div>
+<aside class="konami-panel" id="konami-panel" aria-live="polite"><strong>ACHIEVEMENT UNLOCKED</strong><br>Systems thinker detected. Try <code>sudo hire-blair</code> in the terminal.</aside>
 
 <!-- CURSORS -->
 <div id="cur-dot"></div>
@@ -338,6 +389,7 @@
     <li><a href="#contact">contact</a></li>
   </ul>
   <div class="nav-right">
+    <button id="command-trigger" type="button" class="nav-cta" aria-label="Open command palette">⌘K</button>
     <button id="motion-toggle" type="button" aria-pressed="false" aria-label="Reduce motion"><span>REDUCE MOTION</span></button>
     <button id="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
       <span id="t-ico">☀️</span>
@@ -350,6 +402,9 @@
     </button>
   </div>
 </nav>
+<div class="system-strip" aria-label="Current professional status">
+  <span class="status-online"><strong>ONLINE</strong></span><span>ROLE: <strong>SOFTWARE DEVELOPER</strong></span><span>LOCATION: <strong>NAIROBI</strong></span><span>FOCUS: <strong>DISTRIBUTED SYSTEMS</strong></span><span>STATUS: <strong>BUILDING</strong></span>
+</div>
 
 <!-- HERO -->
 <main id="main-content"><section id="home">
@@ -375,19 +430,9 @@
   <div class="hero-terminal">
     <div class="t-hdr"><div class="t-dot td-r"></div><div class="t-dot td-y"></div><div class="t-dot td-g"></div><div class="t-ttl">blair@dev ~ zsh</div></div>
     <div class="t-body">
-      <div class="t-ln"><span class="t-pr">❯</span><span>cat engineer.json</span></div>
-      <div class="t-ln t-c"># output:</div>
-      <div style="height:.5rem"></div>
-      <div class="t-ln"><span style="color:var(--text-dim)">{</span></div>
-      <div class="t-ln" style="padding-left:1rem"><span class="t-k">"name"</span><span class="t-c">:</span> <span class="t-v">"Blair Vullu"</span><span class="t-c">,</span></div>
-      <div class="t-ln" style="padding-left:1rem"><span class="t-k">"role"</span><span class="t-c">:</span> <span class="t-v">"Backend Engineer"</span><span class="t-c">,</span></div>
-      <div class="t-ln" style="padding-left:1rem"><span class="t-k">"stack"</span><span class="t-c">:</span> <span class="t-v">["Java","Spring Boot","Kafka"]</span><span class="t-c">,</span></div>
-      <div class="t-ln" style="padding-left:1rem"><span class="t-k">"arch"</span><span class="t-c">:</span> <span class="t-v">"Microservices"</span><span class="t-c">,</span></div>
-      <div class="t-ln" style="padding-left:1rem"><span class="t-k">"location"</span><span class="t-c">:</span> <span class="t-v">"Nairobi, KE"</span><span class="t-c">,</span></div>
-      <div class="t-ln" style="padding-left:1rem"><span class="t-k">"status"</span><span class="t-c">:</span> <span class="t-v" style="color:var(--accent2)">"open_to_opportunities"</span></div>
-      <div class="t-ln"><span style="color:var(--text-dim)">}</span></div>
-      <div style="height:.5rem"></div>
-      <div class="t-ln"><span class="t-pr">❯</span><span style="display:inline-block;width:8px;height:14px;background:var(--accent);vertical-align:middle;margin-left:4px;animation:blink 1s step-end infinite"></span></div>
+      <div class="terminal-output" id="terminal-output" aria-live="polite"><span class="term-row term-success">BlairOS 2.1.0 ready.</span><span class="term-row term-result">Type <strong>help</strong> to explore.</span></div>
+      <form class="terminal-form" id="terminal-form"><label for="terminal-input">❯</label><input id="terminal-input" name="command" autocomplete="off" spellcheck="false" aria-label="Terminal command" /></form>
+      <div class="terminal-hint">Try: whoami · projects · notes · sudo hire-blair</div>
     </div>
   </div>
 </section>
@@ -434,19 +479,19 @@
     <div class="sec-hdr fade-in"><div class="sec-lbl">02 — Experience</div><h2 class="sec-ttl">Where I've<br>built things.</h2></div>
     <div class="tl">
       <div class="tl-item fade-in">
-        <div class="tl-date">Apr 2026<br>— Present</div>
+        <div class="tl-date">Apr 2026<br>— Present<span class="commit-meta">c4b1a26 · HEAD → main</span></div>
         <div><div class="tl-badge">Currently Here</div><div class="tl-role">Software Developer</div><div class="tl-co">Eclectics International</div><div class="tl-loc">R&D Department · Nairobi, Kenya</div>
           <ul class="tl-list"><li>Designing and maintaining production-grade microservices using Java and Spring Boot.</li><li>Building secure REST APIs and enterprise integrations through API gateways and ESB architecture.</li><li>Delivering financial-services platforms including Co-Banking, RECA, Heritage Insurance, and ESB integrations.</li><li>Implementing event-driven communication with Apache Kafka and reliable service-to-service workflows.</li><li>Taking ownership across design, implementation, testing, deployment readiness, and production support.</li><li>Collaborating in Agile delivery cycles using Git-based workflows and CI/CD pipelines.</li></ul>
         </div>
       </div>
       <div class="tl-item fade-in">
-        <div class="tl-date">May 2025<br>— Mar 2026</div>
+        <div class="tl-date">May 2025<br>— Mar 2026<span class="commit-meta">9f12d25 · promoted</span></div>
         <div><div class="tl-role">Junior Software Developer</div><div class="tl-co">Eclectics International</div><div class="tl-loc">R&D Department · Nairobi, Kenya</div>
           <ul class="tl-list"><li>Developed microservices-based backend systems using Spring Boot and Java.</li><li>Built and secured REST APIs and integrated services through Spring Cloud Gateway.</li><li>Implemented Kafka-based messaging, service discovery with Eureka, and relational data models.</li><li>Contributed to containerised deployments, production support, and team delivery workflows.</li></ul>
         </div>
       </div>
       <div class="tl-item fade-in">
-        <div class="tl-date">~Early 2025<br>May 2025</div>
+        <div class="tl-date">~Early 2025<br>May 2025<span class="commit-meta">5a7e125 · initial commit</span></div>
         <div><div class="tl-badge" style="background:rgba(0,212,255,.08);border-color:rgba(0,212,255,.2);color:var(--accent)">Probation Period</div><div class="tl-role">Junior Software Developer (Probation)</div><div class="tl-co">Eclectics International</div><div class="tl-loc">R&D Department · Nairobi, Kenya</div>
           <ul class="tl-list"><li>Onboarded into a production microservices environment serving real clients.</li><li>Built foundational skills in distributed systems, API design, and service communication patterns.</li><li>Contributed to internal R&D tooling and early-stage platform modules.</li></ul>
         </div>
@@ -483,8 +528,8 @@
     <div class="proj-grid">
       <article class="proj-card indev fade-in" data-categories="prelaunch enterprise"><div class="proj-status s-dev">⬤ Pre-Launch</div><h3 class="proj-ttl">Heritage Insurance — Quotation & Policy Platform</h3><p class="proj-desc">Enterprise microservices platform for travel and marine quotation, plan comparison, and policy workflows.</p><div class="project-metrics"><div class="metric"><strong>2</strong><span>insurance lines</span></div><div class="metric"><strong>Pre-Launch</strong><span>delivery stage</span></div><div class="metric"><strong>PDF + ESB</strong><span>integrations</span></div></div><div class="proj-tags"><span class="proj-tag">Java</span><span class="proj-tag">Spring Boot</span><span class="proj-tag">Spring Cloud</span><span class="proj-tag">JWT / RBAC</span><span class="proj-tag">Flyway</span></div><details class="case-study"><summary>View case study</summary><div class="case-grid"><div class="case-block"><h4>Problem</h4><p>Insurance teams need consistent quotation, comparison, documentation, and policy workflows across product lines.</p></div><div class="case-block"><h4>My contribution</h4><p>Backend microservices, secure workflows, data migrations, PDF generation, caching, and integration readiness.</p></div><div class="case-block"><h4>Architecture</h4><p>Spring Cloud services behind secure APIs, connected to document and enterprise integration layers.</p></div><div class="case-block"><h4>Outcome</h4><p>A go-live-ready platform currently in final release preparation.</p></div></div></details></article>
       <article class="proj-card feat fade-in" data-categories="live enterprise"><div class="proj-status s-prod">⬤ Live</div><h3 class="proj-ttl">RECA Platform</h3><p class="proj-desc">Live enterprise platform delivered with the R&amp;D engineering team and supported in production.</p><div class="project-metrics"><div class="metric"><strong>Live</strong><span>production status</span></div><div class="metric"><strong>API</strong><span>secure integration</span></div><div class="metric"><strong>CI/CD</strong><span>delivery workflow</span></div></div><div class="proj-tags"><span class="proj-tag">Java</span><span class="proj-tag">Spring Boot</span><span class="proj-tag">REST APIs</span><span class="proj-tag">Spring Security</span></div><details class="case-study"><summary>View case study</summary><div class="case-grid"><div class="case-block"><h4>Problem</h4><p>Deliver a reliable enterprise workflow that can move safely from engineering into live operations.</p></div><div class="case-block"><h4>My contribution</h4><p>Backend services, secure API integrations, data workflows, release readiness, and production support.</p></div><div class="case-block"><h4>Architecture</h4><p>Security-focused Spring Boot services with API and persistence boundaries.</p></div><div class="case-block"><h4>Outcome</h4><p>Successfully released and currently live in production.</p></div></div></details></article>
-      <article class="proj-card indev fade-in" data-categories="development enterprise"><div class="proj-status s-dev">⬤ In Development</div><h3 class="proj-ttl">Enterprise Service Bus (ESB)</h3><p class="proj-desc">An integration layer for reliable, traceable communication between internal platforms and external financial services.</p><div class="project-metrics"><div class="metric"><strong>2</strong><span>message standards</span></div><div class="metric"><strong>4</strong><span>integration controls</span></div><div class="metric"><strong>Async</strong><span>event flows</span></div></div><div class="proj-tags"><span class="proj-tag">Apache Camel</span><span class="proj-tag">Kafka</span><span class="proj-tag">ISO 8583</span><span class="proj-tag">ISO 20022</span></div><details class="case-study"><summary>View case study + architecture</summary><div class="case-grid"><div class="case-block"><h4>Problem</h4><p>Different systems and financial message formats need one dependable integration boundary.</p></div><div class="case-block"><h4>My contribution</h4><p>Message routing, transformation, validation, error handling, and asynchronous orchestration.</p></div><div class="case-block"><h4>Architecture</h4><p>Adapters normalize requests before Camel routes and Kafka workflows connect downstream services.</p></div><div class="case-block"><h4>Outcome</h4><p>A reusable integration foundation that reduces point-to-point coupling.</p></div></div><div class="arch" role="img" aria-label="ESB architecture: channels connect through adapters to routing and transformation, then events and core services"><span class="arch-node">Channels</span><span class="arch-arrow">→</span><span class="arch-node">Adapters</span><span class="arch-arrow">→</span><span class="arch-node">Route + Transform</span><span class="arch-arrow">→</span><span class="arch-node">Kafka</span><span class="arch-arrow">→</span><span class="arch-node">Core Services</span></div></details></article>
-      <article class="proj-card indev fade-in" data-categories="development enterprise"><div class="proj-status s-dev">⬤ In Development</div><h3 class="proj-ttl">Co-Banking Microservices Platform</h3><p class="proj-desc">Multi-tenant banking platform designed around secure customer, KYC, account, and transaction workflows.</p><div class="project-metrics"><div class="metric"><strong>Multi-Tenant</strong><span>data model</span></div><div class="metric"><strong>ACID</strong><span>transactions</span></div><div class="metric"><strong>Event-Driven</strong><span>communication</span></div></div><div class="proj-tags"><span class="proj-tag">Spring Boot</span><span class="proj-tag">Kafka</span><span class="proj-tag">Eureka</span><span class="proj-tag">API Gateway</span><span class="proj-tag">JWT</span></div><details class="case-study"><summary>View case study + architecture</summary><div class="case-grid"><div class="case-block"><h4>Problem</h4><p>Support multiple banking tenants without compromising isolation, security, or transactional integrity.</p></div><div class="case-block"><h4>My contribution</h4><p>Phased service architecture, gateway security, discovery, tenant-aware data, events, and ESB integration.</p></div><div class="case-block"><h4>Architecture</h4><p>A secured gateway routes to independently deployable services backed by tenant-aware stores and events.</p></div><div class="case-block"><h4>Outcome</h4><p>An extensible foundation for onboarding banking capabilities incrementally.</p></div></div><div class="arch" role="img" aria-label="Co-Banking architecture: clients connect through gateway to authentication, customer, KYC, account and transaction services, with events and data stores"><span class="arch-node">Clients</span><span class="arch-arrow">→</span><span class="arch-node">API Gateway</span><span class="arch-arrow">→</span><span class="arch-node">Auth + KYC</span><span class="arch-arrow">→</span><span class="arch-node">Accounts + Transactions</span><span class="arch-arrow">↔</span><span class="arch-node">Kafka + Data</span></div></details></article>
+      <article class="proj-card indev fade-in" data-categories="development enterprise"><div class="proj-status s-dev">⬤ In Development</div><h3 class="proj-ttl">Enterprise Service Bus (ESB)</h3><p class="proj-desc">An integration layer for reliable, traceable communication between internal platforms and external financial services.</p><div class="project-metrics"><div class="metric"><strong>2</strong><span>message standards</span></div><div class="metric"><strong>4</strong><span>integration controls</span></div><div class="metric"><strong>Async</strong><span>event flows</span></div></div><div class="proj-tags"><span class="proj-tag">Apache Camel</span><span class="proj-tag">Kafka</span><span class="proj-tag">ISO 8583</span><span class="proj-tag">ISO 20022</span></div><details class="case-study"><summary>View case study + architecture</summary><div class="case-grid"><div class="case-block"><h4>Problem</h4><p>Different systems and financial message formats need one dependable integration boundary.</p></div><div class="case-block"><h4>My contribution</h4><p>Message routing, transformation, validation, error handling, and asynchronous orchestration.</p></div><div class="case-block"><h4>Architecture</h4><p>Adapters normalize requests before Camel routes and Kafka workflows connect downstream services.</p></div><div class="case-block"><h4>Outcome</h4><p>A reusable integration foundation that reduces point-to-point coupling.</p></div></div><div class="arch-system" aria-label="Interactive ESB architecture"><div class="arch-flow"><button class="arch-node" data-tip="External channels and partner systems initiate requests." type="button">Channels</button><span class="flow-line" aria-label="Synchronous request"></span><button class="arch-node" data-tip="Protocol adapters normalize REST, ISO 8583, and ISO 20022 inputs." type="button">Adapters</button><span class="flow-line" aria-label="Synchronous request"></span><button class="arch-node" data-tip="Apache Camel validates, transforms, enriches, and routes messages." type="button">Camel Routes</button><span class="flow-line async" aria-label="Asynchronous event"></span><button class="arch-node" data-tip="Kafka decouples producers from downstream processing." type="button">Kafka</button><span class="flow-line async" aria-label="Asynchronous event"></span><button class="arch-node" data-tip="Core services process normalized business requests." type="button">Core Services</button></div><div class="retry-row"><button class="arch-node" data-tip="Transient failures use bounded retries with backoff and jitter." type="button">Retry</button><span class="flow-line failure" aria-label="Failure path"></span><button class="arch-node" data-tip="Poison messages move to a dead-letter queue for investigation and controlled replay." type="button">DLQ</button></div><div class="arch-legend"><span><i class="legend-line"></i>sync request</span><span><i class="legend-line async"></i>async event</span><span><i class="legend-line failure"></i>failure / retry</span><span>Hover or focus nodes for details</span></div></div></details></article>
+      <article class="proj-card indev fade-in" data-categories="development enterprise"><div class="proj-status s-dev">⬤ In Development</div><h3 class="proj-ttl">Co-Banking Microservices Platform</h3><p class="proj-desc">Multi-tenant banking platform designed around secure customer, KYC, account, and transaction workflows.</p><div class="project-metrics"><div class="metric"><strong>Multi-Tenant</strong><span>data model</span></div><div class="metric"><strong>ACID</strong><span>transactions</span></div><div class="metric"><strong>Event-Driven</strong><span>communication</span></div></div><div class="proj-tags"><span class="proj-tag">Spring Boot</span><span class="proj-tag">Kafka</span><span class="proj-tag">Eureka</span><span class="proj-tag">API Gateway</span><span class="proj-tag">JWT</span></div><details class="case-study"><summary>View case study + architecture</summary><div class="case-grid"><div class="case-block"><h4>Problem</h4><p>Support multiple banking tenants without compromising isolation, security, or transactional integrity.</p></div><div class="case-block"><h4>My contribution</h4><p>Phased service architecture, gateway security, discovery, tenant-aware data, events, and ESB integration.</p></div><div class="case-block"><h4>Architecture</h4><p>A secured gateway routes to independently deployable services backed by tenant-aware stores and events.</p></div><div class="case-block"><h4>Outcome</h4><p>An extensible foundation for onboarding banking capabilities incrementally.</p></div></div><div class="arch-system" aria-label="Interactive Co-Banking architecture"><div class="arch-flow"><button class="arch-node" data-tip="Web, mobile, and partner clients enter through one secured edge." type="button">Clients</button><span class="flow-line"></span><button class="arch-node" data-tip="The gateway authenticates, rate-limits, adds tenant context, and routes requests." type="button">Gateway</button><span class="flow-line"></span><button class="arch-node" data-tip="Identity and KYC services enforce access and customer verification." type="button">Auth + KYC</button><span class="flow-line"></span><button class="arch-node" data-tip="Account and transaction services maintain ACID business boundaries." type="button">Banking Services</button><span class="flow-line async"></span><button class="arch-node" data-tip="Domain events support notifications, audit, and downstream integration." type="button">Kafka Events</button></div><div class="retry-row"><button class="arch-node" data-tip="Tenant context is enforced in queries, events, caches, logs, and audit records." type="button">Tenant Data</button><span class="flow-line failure"></span><button class="arch-node" data-tip="Failed asynchronous work is retried safely, then isolated for review." type="button">Retry + DLQ</button></div><div class="arch-legend"><span><i class="legend-line"></i>sync request</span><span><i class="legend-line async"></i>domain event</span><span><i class="legend-line failure"></i>failure handling</span><span>Hover or focus nodes for details</span></div></div></details></article>
       <article class="proj-card indev fade-in" data-categories="development personal"><div class="proj-status s-dev">⬤ In Development</div><h3 class="proj-ttl">HRSync — Human Resource Management System</h3><p class="proj-desc">Role-based HR platform covering onboarding, leave, attendance, payroll, performance, and department analytics.</p><div class="project-metrics"><div class="metric"><strong>6</strong><span>HR capabilities</span></div><div class="metric"><strong>RBAC</strong><span>access model</span></div><div class="metric"><strong>Full Stack</strong><span>delivery scope</span></div></div><div class="proj-tags"><span class="proj-tag">Spring Boot</span><span class="proj-tag">React</span><span class="proj-tag">MySQL</span><span class="proj-tag">JWT / RBAC</span></div></article>
       <article class="proj-card fade-in" data-categories="personal"><div class="proj-status s-done">● Complete</div><h3 class="proj-ttl">Money Wallet — Payment Microservices</h3><p class="proj-desc">Payment system with authentication, KYC, wallet and transaction services supporting P2P transfers, deposits, and withdrawals.</p><div class="project-metrics"><div class="metric"><strong>4</strong><span>core services</span></div><div class="metric"><strong>3</strong><span>money flows</span></div><div class="metric"><strong>CI/CD</strong><span>automation</span></div></div><div class="proj-tags"><span class="proj-tag">Spring Boot</span><span class="proj-tag">Kafka</span><span class="proj-tag">Redis</span><span class="proj-tag">MySQL</span></div></article>
       <article class="proj-card fade-in" data-categories="personal"><div class="proj-status s-done">● Complete</div><h3 class="proj-ttl">GeoBuddy — GPS Tracker System</h3><p class="proj-desc">Real-time tracking backend for GF21 devices with secure access and live location updates.</p><div class="project-metrics"><div class="metric"><strong>Real-Time</strong><span>WebSocket updates</span></div><div class="metric"><strong>OTP + JWT</strong><span>access controls</span></div><div class="metric"><strong>IMEI</strong><span>device validation</span></div></div><div class="proj-tags"><span class="proj-tag">Spring Boot</span><span class="proj-tag">WebSocket</span><span class="proj-tag">JWT</span><span class="proj-tag">MySQL</span></div></article>
@@ -555,12 +600,12 @@
 <!-- ENGINEERING NOTES -->
 <section id="notes">
   <div class="notes-wrap">
-    <div class="sec-hdr fade-in"><div class="sec-lbl">// engineering notes</div><h2 class="sec-ttl">How I think<br>about systems.</h2><p class="sec-sub">Short, practical notes drawn from the architecture and delivery problems I work on.</p></div>
-    <div class="notes-grid">
-      <article class="note-card fade-in" id="note-esb"><div class="note-meta">Integration Architecture · 5 min</div><h3>Designing an ESB without creating a bottleneck</h3><p>Keep transport adapters, canonical models, routing, transformation, and failure recovery separate so integration logic remains observable and replaceable.</p></article>
-      <article class="note-card fade-in" id="note-tenancy"><div class="note-meta">Data Architecture · 4 min</div><h3>Tenant isolation in co-banking systems</h3><p>Tenant context must travel through authentication, service boundaries, queries, events, logs, and audit trails—not stop at the API gateway.</p></article>
-      <article class="note-card fade-in" id="note-golive"><div class="note-meta">Delivery · 3 min</div><h3>What “go-live ready” means for a backend service</h3><p>A release is more than passing tests: migrations, rollback, secrets, monitoring, failure handling, operational ownership, and support documentation all matter.</p></article>
+    <div class="sec-hdr fade-in"><div class="sec-lbl">// engineering notes</div><h2 class="sec-ttl">Proof through<br>engineering decisions.</h2><p class="sec-sub">Long-form notes on the failure modes, trade-offs, and protocols behind distributed financial systems.</p></div>
+    <div class="article-grid">
+      <article class="article-card fade-in"><div class="note-meta">Event-Driven Systems · 9 min read</div><h3>Kafka Retries and Dead-Letter Queues Without Losing Control</h3><p>A practical strategy for classifying failures, applying bounded retries, preserving ordering and idempotency, and treating a DLQ as an operational workflow rather than a message graveyard.</p><a class="article-link" href="notes/kafka-retry-dlq.html">Read the full engineering note →</a></article>
+      <article class="article-card fade-in"><div class="note-meta">Financial Messaging · 10 min read</div><h3>ISO 8583 vs ISO 20022: Different Models, Different Integration Risks</h3><p>A grounded comparison of bitmap-based card messaging and semantic XML financial messages, including translation boundaries, correlation, validation, and why conversion is not a field-copying exercise.</p><a class="article-link" href="notes/iso-8583-vs-iso-20022.html">Read the full engineering note →</a></article>
     </div>
+    <article class="article-card fade-in" style="margin-top:1.5rem"><div class="note-meta">Real code specimen · Spring Boot + Kafka</div><h3>Idempotent consumer with bounded retry classification</h3><p>The example separates a durable idempotency claim from business processing and deliberately avoids retrying validation failures.</p><div class="code-window"><div class="code-head"><span>PaymentEventConsumer.java</span><button class="copy-code" type="button" data-copy="kafka-code">COPY</button></div><pre class="code-block" id="kafka-code"><code><span class="code-line"><span class="tok-f">@KafkaListener</span>(topics = <span class="tok-s">"payment.events"</span>)</span><span class="code-line"><span class="tok-k">public void</span> consume(PaymentEvent event) {</span><span class="code-line">  <span class="tok-k">if</span> (!claims.tryClaim(event.id())) <span class="tok-k">return</span>;</span><span class="code-line">  <span class="tok-k">try</span> {</span><span class="code-line">    payments.apply(event);</span><span class="code-line">    claims.markCompleted(event.id());</span><span class="code-line">  } <span class="tok-k">catch</span> (ValidationException invalid) {</span><span class="code-line">    claims.markRejected(event.id(), invalid.getMessage());</span><span class="code-line">  } <span class="tok-k">catch</span> (TransientIntegrationException retryable) {</span><span class="code-line">    claims.release(event.id()); <span class="tok-c">// bounded retry may reclaim</span></span><span class="code-line">    <span class="tok-k">throw</span> retryable;</span><span class="code-line">  }</span><span class="code-line">}</span></code></pre></div></article>
     <div class="hero-actions fade-in" style="margin:2rem 0 0"><a href="https://www.linkedin.com/in/blair-vullu-59a829217/" target="_blank" rel="noopener" class="btn-g" aria-label="Follow Blair Vullu on LinkedIn">Follow on LinkedIn ↗</a><a href="https://github.com/BlairMutisya" target="_blank" rel="noopener" class="btn-g" aria-label="View Blair Vullu's GitHub profile">Explore GitHub ↗</a></div>
   </div>
 </section>
@@ -622,7 +667,7 @@
 <!-- FOOTER -->
 <footer>
   <div class="f-logo">blair.vullu</div>
-  <div class="f-copy">© 2026 Blair Vullu · Nairobi, Kenya</div>
+  <div class="f-copy">© 2026 Blair Vullu · Nairobi, Kenya · Updated Jul 2026 · build v2.1.0</div>
   <div class="f-links">
     <a href="#home">top</a><a href="#projects">projects</a>
     <a href="https://github.com/BlairMutisya" target="_blank" rel="noopener">github</a>
@@ -747,6 +792,51 @@ const nl = document.getElementById('nav-links');
 hbg.setAttribute('aria-expanded','false');
 hbg.addEventListener('click', () => {const open=nl.classList.toggle('open');hbg.setAttribute('aria-expanded',String(open));});
 nl.addEventListener('click', () => nl.classList.remove('open'));
+
+/* ── SHARED COMMAND SYSTEM ── */
+const terminalOutput=document.getElementById('terminal-output');
+const terminalInput=document.getElementById('terminal-input');
+const terminalForm=document.getElementById('terminal-form');
+const commands=[
+  {id:'help',label:'Show available commands',keywords:'commands terminal',run:()=>`Available: ${commands.map(c=>c.id).join(' · ')}`},
+  {id:'whoami',label:'About Blair',keywords:'about profile',run:()=>'<span class="term-success">Blair Vullu</span> — Software Developer building Java, Spring Boot, ESB, and distributed financial systems in Nairobi.'},
+  {id:'projects',label:'Open selected projects',keywords:'work case studies',run:()=>navigateCommand('#projects','Opening project case studies…')},
+  {id:'experience',label:'Open work experience',keywords:'career timeline',run:()=>navigateCommand('#experience','Opening experience timeline…')},
+  {id:'skills',label:'Open technical skills',keywords:'stack java spring',run:()=>navigateCommand('#skills','Opening technical toolkit…')},
+  {id:'notes',label:'Read engineering notes',keywords:'articles kafka iso',run:()=>navigateCommand('#notes','Opening engineering notes…')},
+  {id:'contact',label:'Contact Blair',keywords:'email hire',run:()=>navigateCommand('#contact','Opening secure communications channel…')},
+  {id:'download-cv',label:'Download CV',keywords:'resume pdf',run:()=>{const a=document.createElement('a');a.href='Assets/Blair-Vullu-CV.pdf';a.download='Blair-Vullu-CV.pdf';a.click();return 'CV download initiated.';}},
+  {id:'theme',label:'Toggle light or dark theme',keywords:'appearance color',run:()=>{toggleTheme();return 'Theme toggled.';}},
+  {id:'clear',label:'Clear terminal output',keywords:'reset terminal',run:()=>{terminalOutput.innerHTML='';return ''; }},
+  {id:'sudo hire-blair',label:'Run privileged hiring command',keywords:'easter egg contact',run:()=>{setTimeout(()=>document.querySelector('#contact').scrollIntoView({behavior:'smooth'}),450);return '<span class="term-success">Permission granted.</span> Excellent decision. Opening contact protocol…';}}
+];
+function navigateCommand(target,message){setTimeout(()=>document.querySelector(target)?.scrollIntoView({behavior:'smooth'}),300);return message;}
+function appendTerminal(content,className='term-result'){if(!content)return;const row=document.createElement('span');row.className=`term-row ${className}`;row.innerHTML=content;terminalOutput.appendChild(row);terminalOutput.scrollTop=terminalOutput.scrollHeight;}
+function executeCommand(raw,{echo=true}={}){const input=raw.trim().toLowerCase();if(!input)return;if(echo)appendTerminal(`❯ ${input}`,'term-command');const command=commands.find(item=>item.id===input);if(!command){appendTerminal(`command not found: ${input}. Try help.`,'term-error');return;}appendTerminal(command.run());}
+terminalForm?.addEventListener('submit',event=>{event.preventDefault();executeCommand(terminalInput.value);terminalInput.value='';});
+
+/* ── COMMAND PALETTE ── */
+const palette=document.getElementById('command-palette');const paletteInput=document.getElementById('palette-input');const paletteList=document.getElementById('palette-list');const paletteTrigger=document.getElementById('command-trigger');let paletteIndex=0;let paletteMatches=[...commands];let previousFocus=null;
+if(paletteTrigger)paletteTrigger.textContent=/Mac|iPhone|iPad/.test(navigator.platform)?'⌘K':'CTRL K';
+function renderPalette(query=''){const q=query.trim().toLowerCase();paletteMatches=commands.filter(c=>`${c.id} ${c.label} ${c.keywords}`.includes(q));paletteIndex=Math.min(paletteIndex,Math.max(0,paletteMatches.length-1));paletteList.innerHTML=paletteMatches.map((c,i)=>`<button type="button" class="palette-item ${i===paletteIndex?'selected':''}" data-command="${c.id}"><strong>${c.id}</strong><small>${c.label}</small></button>`).join('')||'<div class="palette-item"><small>No matching commands</small></div>';}
+function openPalette(){previousFocus=document.activeElement;palette.classList.add('open');paletteInput.value='';paletteIndex=0;renderPalette();setTimeout(()=>paletteInput.focus(),20);}
+function closePalette(){palette.classList.remove('open');previousFocus?.focus();}
+function selectPaletteCommand(id){closePalette();executeCommand(id,{echo:false});}
+paletteTrigger?.addEventListener('click',openPalette);palette?.addEventListener('click',event=>{if(event.target===palette)closePalette();const item=event.target.closest('[data-command]');if(item)selectPaletteCommand(item.dataset.command);});paletteInput?.addEventListener('input',()=>{paletteIndex=0;renderPalette(paletteInput.value);});
+document.addEventListener('keydown',event=>{if((event.metaKey||event.ctrlKey)&&event.key.toLowerCase()==='k'){event.preventDefault();palette.classList.contains('open')?closePalette():openPalette();return;}if(!palette.classList.contains('open'))return;if(event.key==='Escape'){closePalette();return;}if(event.key==='Tab'){event.preventDefault();paletteInput.focus();return;}if(event.key==='ArrowDown'){event.preventDefault();paletteIndex=(paletteIndex+1)%Math.max(1,paletteMatches.length);renderPalette(paletteInput.value);}if(event.key==='ArrowUp'){event.preventDefault();paletteIndex=(paletteIndex-1+Math.max(1,paletteMatches.length))%Math.max(1,paletteMatches.length);renderPalette(paletteInput.value);}if(event.key==='Enter'&&paletteMatches[paletteIndex]){event.preventDefault();selectPaletteCommand(paletteMatches[paletteIndex].id);}});
+
+/* ── OPTIONAL BOOT SEQUENCE ── */
+const bootScreen=document.getElementById('boot-screen');const bootLog=document.getElementById('boot-log');const bootLines=['[ OK ] Initializing BlairOS kernel…','[ OK ] Mounting /experience…','[ OK ] Mounting /projects…','[ OK ] Starting distributed-systems.service…','[ OK ] Loading engineering notes…','[ OK ] Portfolio ready.'];let bootTimers=[];
+function finishBoot(){bootTimers.forEach(clearTimeout);bootScreen.classList.add('done');sessionStorage.setItem('pf-booted','true');}
+if(sessionStorage.getItem('pf-booted')==='true'||localStorage.getItem('pf-reduce-motion')==='true'||document.documentElement.classList.contains('reduce-motion')||window.matchMedia('(prefers-reduced-motion: reduce)').matches){finishBoot();}else{bootLines.forEach((line,i)=>bootTimers.push(setTimeout(()=>{const div=document.createElement('div');div.className='boot-line';div.style.animationDelay='0ms';div.innerHTML=line.replace('[ OK ]','<span class="boot-ok">[ OK ]</span>');bootLog.appendChild(div);if(i===bootLines.length-1)bootTimers.push(setTimeout(finishBoot,250));},i*170)));}
+document.getElementById('boot-skip')?.addEventListener('click',finishBoot);document.addEventListener('keydown',event=>{if(event.key==='Escape'&&!bootScreen.classList.contains('done'))finishBoot();});
+
+/* ── POLISH + EASTER EGGS ── */
+document.querySelector('.hero-name')?.addEventListener('mouseenter',event=>{if(!document.documentElement.classList.contains('reduce-motion')){event.currentTarget.classList.remove('glitch');void event.currentTarget.offsetWidth;event.currentTarget.classList.add('glitch');}});
+document.querySelectorAll('.copy-code').forEach(button=>button.addEventListener('click',async()=>{const code=document.getElementById(button.dataset.copy)?.innerText||'';await navigator.clipboard.writeText(code);button.textContent='COPIED';setTimeout(()=>button.textContent='COPY',1400);}));
+const konami=['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];let konamiIndex=0;document.addEventListener('keydown',event=>{konamiIndex=event.key===konami[konamiIndex]?konamiIndex+1:0;if(konamiIndex===konami.length){const panel=document.getElementById('konami-panel');panel.classList.add('show');setTimeout(()=>panel.classList.remove('show'),5000);konamiIndex=0;}});
+document.addEventListener('visibilitychange',()=>{document.title=document.hidden?'blair@portfolio:~$':'Blair Vullu | Backend Engineer';});
+console.log('%c BLAIR VULLU // SOFTWARE DEVELOPER ','background:#050A0E;color:#00D4FF;font:700 16px monospace;padding:8px 12px;border:1px solid #00D4FF');console.log('Looking at the source? Good instinct. → tonnyblair09@gmail.com | github.com/BlairMutisya');
 
 /* ── PROJECT FILTERS ── */
 const filterButtons = document.querySelectorAll('.filter-btn');
