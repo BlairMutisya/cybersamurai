@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ESB Foundation Case Study | Blair Vullu</title><meta name="description" content="A source-backed case study of an ESB foundation, its correlation contract, target routing architecture, and a real Apache Camel reference specimen."><link rel="icon" href="../Assets/favicon.svg" type="image/svg+xml"><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="case-study.css"></head>
+<body><nav class="top"><a class="brand" href="../index.html">blair.vullu</a><a class="back" href="../index.html#projects">← selected projects</a></nav><main>
+<header><div class="eyebrow">Case Study / Integration Architecture / Active Build</div><div class="state">Foundation implemented</div><h1>ESB Foundation: Designing the Integration Boundary Before the Routes</h1><p class="dek">The ESB module currently proves a small, correlation-aware WebFlux boundary. The target is a reliable routing layer with explicit validation, transformation, retry, and dead-letter behavior.</p><div class="meta"><span>Blair Vullu</span><span>Updated July 2026</span><span>WebFlux · Validation · Actuator</span><span>Public source</span></div></header>
+<article>
+<h2>Verified current state</h2><div class="proof-grid"><div class="proof"><strong>1</strong><span>WebFlux ESB module</span></div><div class="proof"><strong>2</strong><span>HTTP endpoints</span></div><div class="proof"><strong>1</strong><span>correlation contract</span></div></div><p class="evidence">Evidence: <a href="https://github.com/BlairMutisya/cobanking-platform/tree/main/esb" target="_blank" rel="noopener">inspect the public ESB module ↗</a></p><p>The module exposes a health endpoint and a route-key dispatch endpoint. Dispatch accepts a request, preserves or creates a correlation ID, and returns a shared response contract. It is intentionally a placeholder at this stage.</p>
+<h2>The integration problem</h2><p>Point-to-point integrations accumulate protocol differences, duplicated mapping rules, inconsistent error handling, and little shared observability. An integration boundary should normalize those differences while keeping business ownership inside the core services. It should not become a second application layer containing every domain rule.</p>
+<h2>Architecture progression</h2><div class="architecture-label">Current</div><div class="flow"><span class="node">HTTP request</span><span class="arrow">→</span><span class="node">Validate</span><span class="arrow">→</span><span class="node">Correlation ID</span><span class="arrow">→</span><span class="node">Accepted response</span></div><div class="architecture-label">Target</div><div class="flow"><span class="node">Protocol Adapter</span><span class="arrow">→</span><span class="node">Canonical Command</span><span class="arrow">→</span><span class="node">Camel Route</span><span class="arrow">→</span><span class="node">Kafka / Service</span><span class="arrow">→</span><span class="node">Retry or DLQ</span></div>
+<p>The target route will validate at entry, normalize protocol-specific payloads into a canonical command, attach correlation and idempotency metadata, and route the work according to its delivery requirements. Transient failures receive bounded exponential backoff; permanent failures fail fast; exhausted work is isolated with enough context for controlled replay.</p>
+<h2>Reference Camel route specimen</h2><div class="callout warning"><strong>Scope:</strong> this is an original reference implementation for the next project phase. It is not copied from confidential client work and is not yet part of the public repository.</div>
+<div class="code-shell"><div class="code-head"><span>PaymentDispatchRoute.java</span><span>REFERENCE / TARGET</span></div><pre><code>import org.apache.camel.builder.RouteBuilder;
+import org.apache.camel.support.processor.idempotent.MemoryIdempotentRepository;
+
+public final class PaymentDispatchRoute extends RouteBuilder {
+  private final PaymentNormalizer normalizer;
+
+  public PaymentDispatchRoute(PaymentNormalizer normalizer) {
+    this.normalizer = normalizer;
+  }
+
+  @Override
+  public void configure() {
+    errorHandler(deadLetterChannel("kafka:payment.dispatch.dlq")
+        .useOriginalMessage()
+        .maximumRedeliveries(3)
+        .redeliveryDelay(500)
+        .useExponentialBackOff()
+        .backOffMultiplier(2));
+
+    from("direct:dispatch-payment")
+        .routeId("dispatch-payment-v1")
+        .validate(header("correlationId").isNotNull())
+        .idempotentConsumer(
+            header("correlationId"),
+            MemoryIdempotentRepository.memoryIdempotentRepository(10_000))
+        .bean(normalizer, "toCanonicalCommand")
+        .setHeader("eventType", constant("payment.dispatch.requested.v1"))
+        .to("kafka:payment.dispatch.v1");
+  }
+}</code></pre></div>
+<h3>What the specimen proves</h3><ul><li><strong>Bounded recovery:</strong> three redeliveries with exponential delay, followed by an explicit dead-letter destination.</li><li><strong>Traceability:</strong> the route rejects messages without correlation metadata.</li><li><strong>Duplicate protection:</strong> the specimen demonstrates idempotent consumption. A production route should replace the in-memory repository with durable storage.</li><li><strong>Canonicalization:</strong> transport-specific input is converted before publishing a versioned event.</li></ul>
+<div class="callout">Production hardening would add exception classification, jitter, durable idempotency, schema validation, OpenTelemetry spans, metrics by route and exception, payload redaction, and an audited replay workflow.</div>
+<h2>Failure decisions</h2><table><thead><tr><th>Failure</th><th>Route decision</th><th>Operational evidence</th></tr></thead><tbody><tr><td>Malformed or incomplete request</td><td>Reject immediately</td><td>Validation reason + correlation ID</td></tr><tr><td>Temporary downstream timeout</td><td>Bounded retry with backoff</td><td>Attempt count + dependency latency</td></tr><tr><td>Duplicate business request</td><td>Return or recover prior result</td><td>Durable idempotency record</td></tr><tr><td>Retry budget exhausted</td><td>Move to DLQ</td><td>Original message + failure metadata</td></tr></tbody></table>
+<h2>Next proof points</h2><ol class="roadmap"><li>Add Camel dependencies and replace placeholder dispatch with one tested route.</li><li>Persist idempotency claims so protection survives restarts and multiple instances.</li><li>Add Kafka through Docker Compose with versioned contracts and a controlled DLQ.</li><li>Test transient, permanent, duplicate, timeout-after-commit, and replay scenarios.</li><li>Expose route latency, retry count, DLQ depth, and oldest failed-message age.</li></ol>
+<div class="takeaways"><h2>Engineering position</h2><p>A good ESB is not impressive because it connects many boxes. It is valuable because failure semantics, evidence, and ownership remain clear when those connections stop behaving.</p></div><nav class="next"><a href="cobanking.html">← Co-Banking case study</a><a href="../notes/kafka-retry-dlq.html">Read: Kafka retry strategy →</a></nav>
+</article></main></body></html>

@@ -1,0 +1,36 @@
+{
+  "name": "Blair Vullu",
+  "role": "Software Developer",
+  "location": "Nairobi, Kenya",
+  "focus": [
+    "Backend systems",
+    "Distributed systems",
+    "Financial integrations"
+  ],
+  "production_stack": [
+    "Java",
+    "Spring Boot",
+    "Spring Cloud",
+    "PostgreSQL",
+    "Docker"
+  ],
+  "currently_building": {
+    "project": "Co-Banking Platform",
+    "stage": "Phase 1 foundation",
+    "verified_modules": 9,
+    "repository": "https://github.com/BlairMutisya/cobanking-platform"
+  },
+  "currently_deepening": [
+    "Apache Camel routing",
+    "Kafka failure handling",
+    "Tenant isolation",
+    "Financial messaging"
+  ],
+  "links": {
+    "email": "mailto:tonnyblair09@gmail.com",
+    "portfolio_source": "https://github.com/BlairMutisya/cybersamurai",
+    "github": "https://github.com/BlairMutisya",
+    "linkedin": "https://www.linkedin.com/in/blair-vullu-59a829217/"
+  },
+  "status": "building"
+}
